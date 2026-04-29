@@ -18,7 +18,7 @@ public class CityScheduleManager : MonoBehaviour
 
     private void RegisterWaypoints()
     {
-        foreach (CityWaypoint wp in FindObjectsOfType<CityWaypoint>())
+        foreach (CityWaypoint wp in FindObjectsByType<CityWaypoint>(FindObjectsSortMode.None))
         {
             if (!string.IsNullOrWhiteSpace(wp.waypointId) && !waypoints.ContainsKey(wp.waypointId))
                 waypoints.Add(wp.waypointId, wp.transform);
