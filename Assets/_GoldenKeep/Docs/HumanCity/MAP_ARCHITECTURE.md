@@ -18,6 +18,7 @@ The scene, schedules, alarm triggers, objectives, and art all connect through th
 - Schedule simulation: `CityScheduleManager` and `CitizenScheduleAgent`.
 - Alarm/objective loop: `CityAlarmDirector`, route triggers, loot, escape, and distraction scripts.
 - Player test harness: `HumanCityPlayerController`.
+- Camera traversal view: `HumanCityCameraFollow` tracks the player inside city bounds.
 
 Each box can be replaced as long as it keeps the same ID-based interface.
 

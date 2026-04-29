@@ -71,7 +71,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         GameObject platformRoot = CreateRoot("CITY_PLATFORMS", root.transform);
         GameObject templateRoot = CreateRoot("CITY_RUNTIME_TEMPLATES", root.transform);
 
-        ConfigureCamera();
+        Camera camera = ConfigureCamera();
         CreateBackdrop(visualRoot.transform);
         CreatePlatforms(platformRoot.transform);
         CreateBuildingWaypoints(buildingRoot.transform);
@@ -81,7 +81,8 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         CitizenScheduleAgent civilianTemplate = CreateCitizenTemplate(templateRoot.transform, "Template_Citizen_Civilian", civilianSprite, new Color(0.86f, 0.78f, 0.58f), 1, false);
         CitizenScheduleAgent guardTemplate = CreateCitizenTemplate(templateRoot.transform, "Template_Citizen_Guard", guardSprite, new Color(0.55f, 0.72f, 1f), 2, true);
 
-        CreatePlayer(root.transform);
+        GameObject player = CreatePlayer(root.transform);
+        AttachCameraFollow(camera, player.transform);
         CreateSystems(systemsRoot.transform, citizenRoot.transform, civilianTemplate, guardTemplate);
         CreateManifest(root);
     }
@@ -101,7 +102,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         return root;
     }
 
-    private void ConfigureCamera()
+    private Camera ConfigureCamera()
     {
         Camera camera = FindFirstObjectByType<Camera>();
         if (camera == null)
@@ -118,6 +119,8 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
 
         if (camera.GetComponent<AudioListener>() == null)
             camera.gameObject.AddComponent<AudioListener>();
+
+        return camera;
     }
 
     private void CreateBackdrop(Transform parent)
@@ -253,7 +256,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         return agent;
     }
 
-    private void CreatePlayer(Transform parent)
+    private GameObject CreatePlayer(Transform parent)
     {
         GameObject player = new GameObject("Player_RaidTester");
         player.transform.SetParent(parent);
@@ -274,6 +277,39 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         collider.size = new Vector2(1.4f, 2.5f);
 
         player.AddComponent<HumanCityPlayerController>();
+        CreatePlayerTraversalMarker(player.transform);
+
+        return player;
+    }
+
+    private void AttachCameraFollow(Camera camera, Transform player)
+    {
+        if (camera == null || player == null)
+            return;
+
+        HumanCityCameraFollow follow = camera.GetComponent<HumanCityCameraFollow>();
+        if (follow == null)
+            follow = camera.gameObject.AddComponent<HumanCityCameraFollow>();
+
+        follow.target = player;
+        follow.targetOffset = new Vector2(0f, 1.8f);
+        follow.minPosition = new Vector2(4f, -3.2f);
+        follow.maxPosition = new Vector2(96f, 5.4f);
+        follow.followSpeed = 18f;
+        follow.SnapToTarget();
+    }
+
+    private void CreatePlayerTraversalMarker(Transform parent)
+    {
+        GameObject marker = new GameObject("PlayerTraversalMarker");
+        marker.transform.SetParent(parent);
+        marker.transform.localPosition = Vector3.zero;
+        marker.transform.localScale = new Vector3(1.25f, 1.65f, 1f);
+
+        SpriteRenderer markerRenderer = marker.AddComponent<SpriteRenderer>();
+        markerRenderer.sprite = solidSprite;
+        markerRenderer.color = new Color(0.2f, 1f, 0.75f, 0.9f);
+        markerRenderer.sortingOrder = 31;
     }
 
     private void CreateSystems(Transform systemsRoot, Transform citizenRoot, CitizenScheduleAgent civilianTemplate, CitizenScheduleAgent guardTemplate)
