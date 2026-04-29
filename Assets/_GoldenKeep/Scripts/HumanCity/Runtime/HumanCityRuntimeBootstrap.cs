@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class HumanCityRuntimeBootstrap : MonoBehaviour
 {
@@ -23,9 +26,42 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
     [Header("Build options")]
     public bool buildOnAwake = true;
     public bool clearExistingGeneratedMap = true;
+    public bool showReferenceBackdrop;
+    public bool showDetailOverlays;
+    public bool showDebugGeometry;
 
     private const string GeneratedRootName = "HUMAN_CITY_01_GENERATED";
     private Sprite solidSprite;
+
+#if UNITY_EDITOR
+    private const string BackdropSpritePath = "Assets/Human Art/Level Blueprint.png";
+    private const string CivilianSpritePath = "Assets/Human Art/1.png";
+    private const string GuardSpritePath = "Assets/Human Art/10.png";
+    private const string PlayerSpritePath = "Assets/Human Art/gargoyle.png";
+    private const string SurfaceCityArtPath = "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_surface_city_strip.png";
+    private const string UndergroundCityArtPath = "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_underground_city_strip.png";
+
+    private static readonly string[] LocationArtPaths =
+    {
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_farmstead_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_market_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_gate_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_castle_gate_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_forge_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_gate_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_underground_spawn_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_forge_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_secret_tunnel_panel.png"
+    };
+
+    private static readonly string[] PropArtPaths =
+    {
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_market_props_strip.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_gate_props_strip.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_back_alley_props_strip.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_underground_props_strip.png"
+    };
+#endif
 
     private static readonly Dictionary<string, Vector2> RoutePositions = new Dictionary<string, Vector2>
     {
@@ -57,6 +93,10 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
 
     public void BuildCity()
     {
+#if UNITY_EDITOR
+        ResolveEditorSpriteReferences();
+#endif
+
         if (buildingsJson == null || citizensJson == null)
         {
             Debug.LogError("HumanCityRuntimeBootstrap needs buildingsJson and citizensJson.");
@@ -122,7 +162,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         }
 
         camera.orthographic = true;
-        camera.orthographicSize = 14f;
+        camera.orthographicSize = 6.2f;
         camera.backgroundColor = new Color(0.09f, 0.08f, 0.08f);
         camera.transform.position = new Vector3(48f, 0.5f, -20f);
 
@@ -134,6 +174,9 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
 
     private void CreateBackdrop(Transform parent)
     {
+        if (!showReferenceBackdrop)
+            return;
+
         if (backdropSprite == null) return;
 
         GameObject backdrop = new GameObject("VISUAL_REFERENCE_Level_Blueprint");
@@ -148,8 +191,12 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
 
     private void CreateProvidedArtwork(Transform parent)
     {
-        CreateArtworkSprite(parent, "ART_SurfaceCityStrip", surfaceCityArtSprite, new Vector2(50f, 4.8f), 112f, -92, new Color(1f, 1f, 1f, 0.34f));
-        CreateArtworkSprite(parent, "ART_UndergroundCityStrip", undergroundCityArtSprite, new Vector2(50f, -5.15f), 102f, -91, new Color(1f, 1f, 1f, 0.28f));
+        CreateArtworkBand(parent, "ART_SurfaceCityCleanBand", surfaceCityArtSprite, new Vector2(50f, 2.45f), new Vector2(112f, 8.2f), -92, Color.white);
+        CreateArtworkBand(parent, "ART_UndergroundCityCleanBand", undergroundCityArtSprite, new Vector2(50f, -4.25f), new Vector2(112f, 6.9f), -91, Color.white);
+
+        if (!showDetailOverlays)
+            return;
+
         CreateLocationArtwork(parent);
         CreatePropArtwork(parent);
     }
@@ -214,6 +261,26 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         float spriteWidth = Mathf.Max(0.01f, sprite.bounds.size.x);
         float scale = targetWidth / spriteWidth;
         artObject.transform.localScale = new Vector3(scale, scale, 1f);
+    }
+
+    private void CreateArtworkBand(Transform parent, string objectName, Sprite sprite, Vector2 position, Vector2 targetSize, int sortingOrder, Color color)
+    {
+        if (sprite == null || targetSize.x <= 0f || targetSize.y <= 0f)
+            return;
+
+        GameObject artObject = new GameObject(objectName);
+        artObject.transform.SetParent(parent);
+        artObject.transform.localPosition = new Vector3(position.x, position.y, 0f);
+
+        SpriteRenderer renderer = artObject.AddComponent<SpriteRenderer>();
+        renderer.sprite = sprite;
+        renderer.color = color;
+        renderer.sortingOrder = sortingOrder;
+
+        Vector2 spriteSize = sprite.bounds.size;
+        float scaleX = targetSize.x / Mathf.Max(0.01f, spriteSize.x);
+        float scaleY = targetSize.y / Mathf.Max(0.01f, spriteSize.y);
+        artObject.transform.localScale = new Vector3(scaleX, scaleY, 1f);
     }
 
     private void CreatePlatforms(Transform parent)
@@ -409,9 +476,12 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
             follow = camera.gameObject.AddComponent<HumanCityCameraFollow>();
 
         follow.target = player;
-        follow.targetOffset = new Vector2(0f, 1.8f);
+        follow.targetOffset = new Vector2(0f, 0.8f);
         follow.minPosition = new Vector2(4f, -3.2f);
         follow.maxPosition = new Vector2(96f, 5.4f);
+        follow.clampToViewBounds = true;
+        follow.viewMinPosition = new Vector2(-6f, -7.6f);
+        follow.viewMaxPosition = new Vector2(106f, 6.4f);
         follow.followSpeed = 18f;
         follow.SnapToTarget();
     }
@@ -427,6 +497,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         markerRenderer.sprite = solidSprite;
         markerRenderer.color = new Color(0.2f, 1f, 0.75f, 0.9f);
         markerRenderer.sortingOrder = 31;
+        markerRenderer.enabled = showDebugGeometry;
     }
 
     private void CreateSystems(Transform systemsRoot, Transform citizenRoot, CitizenScheduleAgent civilianTemplate, CitizenScheduleAgent guardTemplate)
@@ -482,6 +553,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         renderer.sprite = solidSprite;
         renderer.color = color;
         renderer.sortingOrder = trigger ? 5 : 0;
+        renderer.enabled = showDebugGeometry;
 
         BoxCollider2D collider = box.AddComponent<BoxCollider2D>();
         collider.isTrigger = trigger;
@@ -543,4 +615,101 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
     {
         return string.IsNullOrEmpty(value) ? "Unnamed" : value.Replace(' ', '_').Replace('/', '_');
     }
+
+#if UNITY_EDITOR
+    private void ResolveEditorSpriteReferences()
+    {
+        backdropSprite = ResolveSpriteReference(backdropSprite, BackdropSpritePath, 16f);
+        civilianSprite = ResolveSpriteReference(civilianSprite, CivilianSpritePath, 512f);
+        guardSprite = ResolveSpriteReference(guardSprite, GuardSpritePath, 512f);
+        playerSprite = ResolveSpriteReference(playerSprite, PlayerSpritePath, 512f);
+        surfaceCityArtSprite = ResolveSpriteReference(surfaceCityArtSprite, SurfaceCityArtPath, 100f);
+        undergroundCityArtSprite = ResolveSpriteReference(undergroundCityArtSprite, UndergroundCityArtPath, 100f);
+        locationArtSprites = ResolveSpriteReferences(locationArtSprites, LocationArtPaths, 100f);
+        propArtSprites = ResolveSpriteReferences(propArtSprites, PropArtPaths, 100f);
+    }
+
+    private static Sprite[] ResolveSpriteReferences(Sprite[] currentSprites, string[] fallbackPaths, float pixelsPerUnit)
+    {
+        int currentLength = currentSprites == null ? 0 : currentSprites.Length;
+        int fallbackLength = fallbackPaths == null ? 0 : fallbackPaths.Length;
+        int resolvedLength = currentLength > 0 ? currentLength : fallbackLength;
+        Sprite[] sprites = new Sprite[resolvedLength];
+
+        for (int i = 0; i < resolvedLength; i++)
+        {
+            Sprite currentSprite = i < currentLength ? currentSprites[i] : null;
+            string fallbackPath = i < fallbackLength ? fallbackPaths[i] : string.Empty;
+            sprites[i] = ResolveSpriteReference(currentSprite, fallbackPath, pixelsPerUnit);
+        }
+
+        return sprites;
+    }
+
+    private static Sprite ResolveSpriteReference(Sprite currentSprite, string fallbackPath, float pixelsPerUnit)
+    {
+        if (currentSprite != null)
+        {
+            ConfigureSpriteImport(AssetDatabase.GetAssetPath(currentSprite), pixelsPerUnit);
+            return currentSprite;
+        }
+
+        return LoadSpriteAtPath(fallbackPath, pixelsPerUnit);
+    }
+
+    private static Sprite LoadSpriteAtPath(string assetPath, float pixelsPerUnit)
+    {
+        if (string.IsNullOrEmpty(assetPath))
+            return null;
+
+        ConfigureSpriteImport(assetPath, pixelsPerUnit);
+
+        Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
+        if (sprite != null)
+            return sprite;
+
+        Object[] assets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+        foreach (Object asset in assets)
+        {
+            Sprite foundSprite = asset as Sprite;
+            if (foundSprite != null)
+                return foundSprite;
+        }
+
+        Debug.LogWarning("HumanCityRuntimeBootstrap could not load sprite at " + assetPath);
+        return null;
+    }
+
+    private static void ConfigureSpriteImport(string assetPath, float pixelsPerUnit)
+    {
+        if (string.IsNullOrEmpty(assetPath))
+            return;
+
+        TextureImporter importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+        if (importer == null)
+            return;
+
+        bool changed = false;
+        changed |= SetImporterValue(importer.textureType, TextureImporterType.Sprite, value => importer.textureType = value);
+        changed |= SetImporterValue(importer.spriteImportMode, SpriteImportMode.Single, value => importer.spriteImportMode = value);
+        changed |= SetImporterValue(importer.spritePixelsPerUnit, pixelsPerUnit, value => importer.spritePixelsPerUnit = value);
+        changed |= SetImporterValue(importer.spritePivot, new Vector2(0.5f, 0.5f), value => importer.spritePivot = value);
+        changed |= SetImporterValue(importer.mipmapEnabled, false, value => importer.mipmapEnabled = value);
+        changed |= SetImporterValue(importer.filterMode, FilterMode.Point, value => importer.filterMode = value);
+        changed |= SetImporterValue(importer.textureCompression, TextureImporterCompression.Uncompressed, value => importer.textureCompression = value);
+        changed |= SetImporterValue(importer.alphaIsTransparency, true, value => importer.alphaIsTransparency = value);
+
+        if (changed)
+            importer.SaveAndReimport();
+    }
+
+    private static bool SetImporterValue<T>(T currentValue, T targetValue, System.Action<T> setter)
+    {
+        if (EqualityComparer<T>.Default.Equals(currentValue, targetValue))
+            return false;
+
+        setter(targetValue);
+        return true;
+    }
+#endif
 }

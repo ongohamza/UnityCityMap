@@ -8,10 +8,15 @@ using UnityEngine.SceneManagement;
 
 public static class HumanCityMapBuilder
 {
+    private static readonly bool ShowReferenceBackdrop = false;
+    private static readonly bool ShowDetailOverlays = false;
+    private static readonly bool ShowDebugGeometry = false;
     private const string ScenePath = "Assets/_GoldenKeep/Scenes/Cities/HUMAN_CITY_01.unity";
     private const string BuildingDataPath = "Assets/_GoldenKeep/Data/HumanCity/city_buildings.json";
     private const string CitizenDataPath = "Assets/_GoldenKeep/Data/HumanCity/city_citizens.json";
     private const string RouteGraphPath = "Assets/_GoldenKeep/Data/HumanCity/route_graph.json";
+    private const string RuntimePrefabPath = "Assets/_GoldenKeep/Prefabs/HumanCity/PF_HumanCityRuntimeMap.prefab";
+    private const string RuntimePackagePath = "HumanCityRuntimePrefab.unitypackage";
     private const string BackdropPath = "Assets/Human Art/Level Blueprint.png";
     private const string VisualReferencePath = "Assets/Human Art/Level 1 Blueprint best version so far.png";
     private const string CivilianSpritePath = "Assets/Human Art/1.png";
@@ -40,6 +45,20 @@ public static class HumanCityMapBuilder
         "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_gate_props_strip.png",
         "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_back_alley_props_strip.png",
         "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_underground_props_strip.png"
+    };
+
+    private static readonly string[] RuntimePackageAssetPaths =
+    {
+        RuntimePrefabPath,
+        "Assets/_GoldenKeep/Scripts/HumanCity/Runtime",
+        "Assets/_GoldenKeep/Data/HumanCity",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided",
+        BackdropPath,
+        VisualReferencePath,
+        CivilianSpritePath,
+        GuardSpritePath,
+        PlayerSpritePath,
+        "Assets/_GoldenKeep/Docs/HumanCity/MAP_ARCHITECTURE.md"
     };
 
     private static readonly Dictionary<string, Vector2> RoutePositions = new Dictionary<string, Vector2>
@@ -113,6 +132,69 @@ public static class HumanCityMapBuilder
         Debug.Log("Built human city map with " + waypoints.Count + " building waypoints at " + ScenePath);
     }
 
+    [MenuItem("Golden Keep/Human City/Create Runtime Prefab")]
+    public static void CreateRuntimePrefabMenuItem()
+    {
+        CreateRuntimePrefabAsset();
+    }
+
+    [MenuItem("Golden Keep/Human City/Export Runtime Prefab Package")]
+    public static void ExportRuntimePrefabPackage()
+    {
+        GameObject prefab = CreateRuntimePrefabAsset();
+        if (prefab == null)
+        {
+            Debug.LogError("Human City runtime prefab package export failed: prefab could not be created.");
+            return;
+        }
+
+        AssetDatabase.ExportPackage(RuntimePackageAssetPaths, RuntimePackagePath, ExportPackageOptions.Recurse | ExportPackageOptions.IncludeDependencies);
+        Debug.Log("Exported portable human city prefab package to " + RuntimePackagePath);
+    }
+
+    private static GameObject CreateRuntimePrefabAsset()
+    {
+        EnsureProjectFolders();
+        ConfigureSpriteImport(BackdropPath, 16f);
+        ConfigureSpriteImport(VisualReferencePath, 16f);
+        ConfigureSpriteImport(CivilianSpritePath, 512f);
+        ConfigureSpriteImport(GuardSpritePath, 512f);
+        ConfigureSpriteImport(PlayerSpritePath, 512f);
+        ConfigureProvidedArtImports();
+
+        GameObject prefabRoot = new GameObject("PF_HumanCityRuntimeMap");
+        HumanCityRuntimeBootstrap bootstrap = prefabRoot.AddComponent<HumanCityRuntimeBootstrap>();
+        ConfigureRuntimeBootstrap(bootstrap);
+
+        GameObject savedPrefab = PrefabUtility.SaveAsPrefabAsset(prefabRoot, RuntimePrefabPath);
+        Object.DestroyImmediate(prefabRoot);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        Debug.Log("Created portable human city runtime prefab at " + RuntimePrefabPath);
+        return savedPrefab;
+    }
+
+    private static void ConfigureRuntimeBootstrap(HumanCityRuntimeBootstrap bootstrap)
+    {
+        bootstrap.buildingsJson = AssetDatabase.LoadAssetAtPath<TextAsset>(BuildingDataPath);
+        bootstrap.citizensJson = AssetDatabase.LoadAssetAtPath<TextAsset>(CitizenDataPath);
+        bootstrap.routeGraphJson = AssetDatabase.LoadAssetAtPath<TextAsset>(RouteGraphPath);
+        bootstrap.backdropSprite = LoadSpriteAsset(BackdropPath, 16f);
+        bootstrap.civilianSprite = LoadSpriteAsset(CivilianSpritePath, 512f);
+        bootstrap.guardSprite = LoadSpriteAsset(GuardSpritePath, 512f);
+        bootstrap.playerSprite = LoadSpriteAsset(PlayerSpritePath, 512f);
+        bootstrap.surfaceCityArtSprite = LoadSpriteAsset(SurfaceCityArtPath, 100f);
+        bootstrap.undergroundCityArtSprite = LoadSpriteAsset(UndergroundCityArtPath, 100f);
+        bootstrap.locationArtSprites = LoadSpriteAssets(LocationArtPaths, 100f);
+        bootstrap.propArtSprites = LoadSpriteAssets(PropArtPaths, 100f);
+        bootstrap.buildOnAwake = true;
+        bootstrap.clearExistingGeneratedMap = true;
+        bootstrap.showReferenceBackdrop = ShowReferenceBackdrop;
+        bootstrap.showDetailOverlays = ShowDetailOverlays;
+        bootstrap.showDebugGeometry = ShowDebugGeometry;
+    }
+
     private static void EnsureProjectFolders()
     {
         string[] folders =
@@ -151,7 +233,7 @@ public static class HumanCityMapBuilder
         GameObject cameraObject = new GameObject("Main Camera");
         Camera camera = cameraObject.AddComponent<Camera>();
         camera.orthographic = true;
-        camera.orthographicSize = 14f;
+        camera.orthographicSize = 6.2f;
         camera.backgroundColor = new Color(0.09f, 0.08f, 0.08f);
         camera.transform.position = new Vector3(48f, 0.5f, -20f);
         AssignTag(cameraObject, "MainCamera");
@@ -160,6 +242,9 @@ public static class HumanCityMapBuilder
 
     private static void CreateBackdrop(Transform parent)
     {
+        if (!ShowReferenceBackdrop)
+            return;
+
         Sprite backdrop = AssetDatabase.LoadAssetAtPath<Sprite>(BackdropPath);
         if (backdrop == null) return;
 
@@ -175,8 +260,12 @@ public static class HumanCityMapBuilder
 
     private static void CreateProvidedArtwork(Transform parent)
     {
-        CreateArtworkSprite(parent, "ART_SurfaceCityStrip", AssetDatabase.LoadAssetAtPath<Sprite>(SurfaceCityArtPath), new Vector2(50f, 4.8f), 112f, -92, new Color(1f, 1f, 1f, 0.34f));
-        CreateArtworkSprite(parent, "ART_UndergroundCityStrip", AssetDatabase.LoadAssetAtPath<Sprite>(UndergroundCityArtPath), new Vector2(50f, -5.15f), 102f, -91, new Color(1f, 1f, 1f, 0.28f));
+        CreateArtworkBand(parent, "ART_SurfaceCityCleanBand", AssetDatabase.LoadAssetAtPath<Sprite>(SurfaceCityArtPath), new Vector2(50f, 2.45f), new Vector2(112f, 8.2f), -92, Color.white);
+        CreateArtworkBand(parent, "ART_UndergroundCityCleanBand", AssetDatabase.LoadAssetAtPath<Sprite>(UndergroundCityArtPath), new Vector2(50f, -4.25f), new Vector2(112f, 6.9f), -91, Color.white);
+
+        if (!ShowDetailOverlays)
+            return;
+
         CreateLocationArtwork(parent);
         CreatePropArtwork(parent);
     }
@@ -237,6 +326,26 @@ public static class HumanCityMapBuilder
         float spriteWidth = Mathf.Max(0.01f, sprite.bounds.size.x);
         float scale = targetWidth / spriteWidth;
         artObject.transform.localScale = new Vector3(scale, scale, 1f);
+    }
+
+    private static void CreateArtworkBand(Transform parent, string objectName, Sprite sprite, Vector2 position, Vector2 targetSize, int sortingOrder, Color color)
+    {
+        if (sprite == null || targetSize.x <= 0f || targetSize.y <= 0f)
+            return;
+
+        GameObject artObject = new GameObject(objectName);
+        artObject.transform.SetParent(parent);
+        artObject.transform.localPosition = new Vector3(position.x, position.y, 0f);
+
+        SpriteRenderer renderer = artObject.AddComponent<SpriteRenderer>();
+        renderer.sprite = sprite;
+        renderer.color = color;
+        renderer.sortingOrder = sortingOrder;
+
+        Vector2 spriteSize = sprite.bounds.size;
+        float scaleX = targetSize.x / Mathf.Max(0.01f, spriteSize.x);
+        float scaleY = targetSize.y / Mathf.Max(0.01f, spriteSize.y);
+        artObject.transform.localScale = new Vector3(scaleX, scaleY, 1f);
     }
 
     private static void CreatePlatforms(Transform parent, Sprite solidSprite)
@@ -423,9 +532,12 @@ public static class HumanCityMapBuilder
     {
         HumanCityCameraFollow follow = camera.gameObject.AddComponent<HumanCityCameraFollow>();
         follow.target = player;
-        follow.targetOffset = new Vector2(0f, 1.8f);
+        follow.targetOffset = new Vector2(0f, 0.8f);
         follow.minPosition = new Vector2(4f, -3.2f);
         follow.maxPosition = new Vector2(96f, 5.4f);
+        follow.clampToViewBounds = true;
+        follow.viewMinPosition = new Vector2(-6f, -7.6f);
+        follow.viewMaxPosition = new Vector2(106f, 6.4f);
         follow.followSpeed = 18f;
         follow.SnapToTarget();
     }
@@ -506,6 +618,7 @@ public static class HumanCityMapBuilder
         renderer.sprite = sprite;
         renderer.color = color;
         renderer.sortingOrder = trigger ? 5 : 0;
+        renderer.enabled = ShowDebugGeometry;
 
         BoxCollider2D collider = box.AddComponent<BoxCollider2D>();
         collider.isTrigger = trigger;
@@ -534,16 +647,47 @@ public static class HumanCityMapBuilder
         return AssetDatabase.LoadAssetAtPath<Sprite>(SolidSpritePath);
     }
 
+    private static Sprite[] LoadSpriteAssets(string[] assetPaths, float pixelsPerUnit)
+    {
+        Sprite[] sprites = new Sprite[assetPaths.Length];
+        for (int i = 0; i < assetPaths.Length; i++)
+            sprites[i] = LoadSpriteAsset(assetPaths[i], pixelsPerUnit);
+
+        return sprites;
+    }
+
+    private static Sprite LoadSpriteAsset(string assetPath, float pixelsPerUnit)
+    {
+        ConfigureSpriteImport(assetPath, pixelsPerUnit);
+        Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
+        if (sprite != null)
+            return sprite;
+
+        Object[] assets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+        foreach (Object asset in assets)
+        {
+            Sprite foundSprite = asset as Sprite;
+            if (foundSprite != null)
+                return foundSprite;
+        }
+
+        Debug.LogWarning("Human City prefab builder could not load sprite at " + assetPath);
+        return null;
+    }
+
     private static void ConfigureSpriteImport(string assetPath, float pixelsPerUnit)
     {
         TextureImporter importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
         if (importer == null) return;
 
         importer.textureType = TextureImporterType.Sprite;
+        importer.spriteImportMode = SpriteImportMode.Single;
         importer.spritePixelsPerUnit = pixelsPerUnit;
+        importer.spritePivot = new Vector2(0.5f, 0.5f);
         importer.mipmapEnabled = false;
         importer.filterMode = FilterMode.Point;
         importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.alphaIsTransparency = true;
         importer.SaveAndReimport();
     }
 
