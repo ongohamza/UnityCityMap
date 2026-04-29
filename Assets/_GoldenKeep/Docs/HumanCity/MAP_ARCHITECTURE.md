@@ -13,7 +13,8 @@ The scene, schedules, alarm triggers, objectives, and art all connect through th
 ## Black Boxes
 
 - Data: JSON files in `Assets/_GoldenKeep/Data/HumanCity/`.
-- Scene builder: `HumanCityMapBuilder` creates Unity objects from data and art.
+- Runtime scene builder: `HumanCityRuntimeBootstrap` creates the playable map from data and art when the scene starts.
+- Editor scene builder: `HumanCityMapBuilder` can bake the same idea into edit-time objects later.
 - Schedule simulation: `CityScheduleManager` and `CitizenScheduleAgent`.
 - Alarm/objective loop: `CityAlarmDirector`, route triggers, loot, escape, and distraction scripts.
 - Player test harness: `HumanCityPlayerController`.
@@ -22,10 +23,18 @@ Each box can be replaced as long as it keeps the same ID-based interface.
 
 ## Build Command
 
-Open Unity, then run:
+The current scene contains a `HumanCityRuntimeBootstrap` component. Press Play in `HUMAN_CITY_01` and it builds the map at runtime.
+
+Optional edit-time bake command:
 
 ```text
 Golden Keep > Human City > Rebuild HUMAN_CITY_01
+```
+
+Validation command:
+
+```text
+Golden Keep > Human City > Validate Current Scene
 ```
 
 This creates:

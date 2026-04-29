@@ -211,8 +211,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &111000000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111000001}
+  - component: {fileID: 111000002}
+  m_Layer: 0
+  m_Name: HumanCityRuntimeBootstrap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111000001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111000000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &111000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8b4be0f9db4e1a8b0a0d78f3b0c7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingsJson: {fileID: 4900000, guid: ae0d2fd540677f5db896a915926668d3, type: 3}
+  citizensJson: {fileID: 4900000, guid: 3f49836f66b91189e9b614a1111f8f41, type: 3}
+  routeGraphJson: {fileID: 4900000, guid: 170655626750b8232a381832afe8220f, type: 3}
+  backdropSprite: {fileID: 21300000, guid: 21870d0f4296bd71f928917c43c58ddb, type: 3}
+  civilianSprite: {fileID: 21300000, guid: de8097780c9ad53eeb403b3387fac5fe, type: 3}
+  guardSprite: {fileID: 21300000, guid: e1ced20a272403eaeb33b05088b762f0, type: 3}
+  playerSprite: {fileID: 21300000, guid: 16f3b0f01a72515e591c8b8eedb5785a, type: 3}
+  buildOnAwake: 1
+  clearExistingGeneratedMap: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 490259315}
+  - {fileID: 111000001}
