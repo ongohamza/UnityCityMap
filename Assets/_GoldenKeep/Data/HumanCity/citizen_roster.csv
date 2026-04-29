@@ -1,0 +1,51 @@
+id,name,role,personality,attackType,movement,threatLevel,alarmBehavior,prefabKey,playerOpportunity
+HCN_001,Alden Brask,guard,"Gruff, proud, suspicious of strangers.",melee sword,walk patrol,high,attacks on sight when alarmed,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_002,Mira Hollen,baker,Warm but observant; notices missing tools.,none,walk route,low,flees and raises alarm,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_003,Tobin Vale,farmer,"Practical, tired, keeps early hours.",pitchfork,walk route,low,defensive only,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_004,Sera Valewick,market vendor,"Talkative, alert, moves with crowds.",none,walk route,low,calls alarm,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_005,Garron Holt,blacksmith,"Strong, short-tempered, dangerous if provoked.",hammer swing,walk route,medium,fights if cornered,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_006,Elric Dane,footman,"Young guard, eager, overcommits to pursuit.",melee sword,short patrol,medium,pursues player,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_007,Nella Reed,water carrier,"Quiet, reliable, crosses market often.",none,walk route,low,well path witness,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_008,Father Caldus,priest,"Calm, can rally townsfolk with the bell.",bell rally,walk route,medium,rings bell/rallies guards,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_009,Brina Moss,apothecary,"Careful, keeps to back alley at dusk.",none,walk route,low,flees to back alley,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_010,Joric Fen,stablehand,"Fast runner, raises alarm if animals panic.",none,fast run,low,runs to barracks,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_011,Tessa Goldthread,tailor,"Proud artisan, moves between market and tailor.",none,walk route,low,calls alarm,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_012,Captain Varro,captain,"Elite guard, slow but lethal.",heavy melee,slow patrol,very_high,"commands guards, lethal",HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_013,Lysa Tern,scribe,"Carries schedules and keys, avoids fighting.",none,walk route,low,information carrier,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_014,Marek Stone,carpenter,Repairs gates and barricades.,hammer swing,walk route,medium,repairs barricades,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_015,Orren Pike,watchman,"West tower archer, patient and accurate.",bow shot,tower patrol,high,fires from range,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_016,Dalia Pike,watchman,"East tower archer, sharper eyes than Orren.",bow shot,tower patrol,high,fires from range,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_017,Selwin Marr,mayor,"Cowardly but guarded, valuable information node.",none,escort route,low,protected objective,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_018,Hale Voss,merchant,"Counts coin, hires guards when alarmed.",none,walk route,low,hires/runs to guard,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_019,Petra Clay,potter,Moves between kiln and market.,none,walk route,low,calls alarm,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_020,Rowan Beck,miller,"Visits windmill/market, predictable.",none,walk route,low,predictable worker,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_021,Iris Bell,acolyte,Rings chapel bell if panic spreads.,none,walk route,low,runs to bell,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_022,Doran Ash,gravedigger,Night route near cemetery; ignores market noise.,shovel swing,slow walk,low,defensive only,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_023,Fenn Alder,tavern keeper,Knows guard meal times.,club swing,walk route,medium,rallies tavern crowd,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_024,Livia Crowe,barmaid,Moves between tavern and well; notices blood.,none,walk route,low,alarm witness,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_025,Bram Keel,dockhand,"Uses river bridge, low combat.",hook swing,walk route,low,defensive only,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_026,Nora Keel,fishmonger,"Market crowd node, loud alarm caller.",none,walk route,low,loud alarm caller,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_027,Wystan Rook,militia,"Part-time guard, patrols after noon.",spear jab,short patrol,medium,defends nearby building,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_028,Edda Thorn,militia,"Protects chapel yard, spear user.",spear jab,short patrol,medium,defends nearby building,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_029,Cailen Brooks,messenger,"Fast, can carry alarm across city.",none,fast run,medium,spreads alarm quickly,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_030,Maud Greer,cook,"Supplies barracks, useful schedule clue.",none,walk route,low,barracks supply clue,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_031,Ansel Fair,guard,"North gate guard, predictable rotations.",melee sword,walk patrol,high,attacks on sight when alarmed,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_032,Perrin Wold,guard,"Barracks patrol, lazy before lunch.",melee sword,walk patrol,high,attacks on sight when alarmed,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_033,Helga Marr,noble,"Mayor household, escorts create risk.",none,escort route,low,protected by escort,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_034,Rulf Redcap,drunk,"Tavern regular, noisy distraction.",none,wander,low,distraction node,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_035,Jessa Flint,charcoal seller,Moves forge fuel; can block alleys.,none,cart route,low,blocks alley,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_036,Otto Grey,storehouse clerk,"Has storehouse route, noncombatant alarm risk.",none,walk route,low,opens storehouse timing,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_037,Clara Reed,washer,"Visits well, river, back alley.",none,walk route,low,well/river witness,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_038,Bevin Lark,lamplighter,Evening route reveals dark paths.,none,evening route,low,reveals stealth timing,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_039,Ned Harrow,ratcatcher,Knows sewer route; suspicious but not brave.,none,sewer route,low,sewer clue,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_040,Palla Wren,weaver,"Low threat, crowd schedule node.",none,walk route,low,crowd node,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_041,Gideon Hart,chapel guard,"Heavy mace, guards reliquary.",heavy mace,stationary guard,high,protects chapel/relic,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_042,Vera Silt,herbalist,"Visits cemetery, apothecary, chapel.",none,walk route,low,cemetery route,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_043,Tomlin Cross,porter,Carries crates to storehouse.,crate shove,walk route,low,moves crates to storehouse,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_044,Ada Pike,archer trainee,Practices near west tower.,none,walk route,low,flees,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_045,Lucan Merrow,archer,Rooftop patrol near chapel.,bow shot,perch patrol,high,ranged alarm defender,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_046,Mina Dell,candlemaker,"Chapel/craft route, noncombatant.",none,walk route,low,flees,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_047,Rost Fenwick,gate mechanic,Repairs gate controls at dusk.,wrench swing,walk route,medium,gate timing clue,HumanMilitia,avoid or isolate; direct rush is dangerous
+HCN_048,Yara Voss,coin clerk,"Market/mayor house route, alarm caller.",none,walk route,low,alarm caller,HumanCivilian,"avoid, observe schedule, or use as alarm-risk node"
+HCN_049,Borin Shield,heavy guard,"Storehouse bruiser, high threat.",heavy sword,stationary guard,very_high,protects storehouse,HumanGuard,avoid or isolate; direct rush is dangerous
+HCN_050,Cress Amber,bell ringer,Runs to chapel bell during alarm.,none,fast run,medium,runs to bell,HumanMilitia,avoid or isolate; direct rush is dangerous
