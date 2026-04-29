@@ -14,6 +14,12 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
     public Sprite guardSprite;
     public Sprite playerSprite;
 
+    [Header("Provided city art")]
+    public Sprite surfaceCityArtSprite;
+    public Sprite undergroundCityArtSprite;
+    public Sprite[] locationArtSprites;
+    public Sprite[] propArtSprites;
+
     [Header("Build options")]
     public bool buildOnAwake = true;
     public bool clearExistingGeneratedMap = true;
@@ -74,6 +80,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
 
         Camera camera = ConfigureCamera();
         CreateBackdrop(visualRoot.transform);
+        CreateProvidedArtwork(visualRoot.transform);
         CreatePlatforms(platformRoot.transform);
         CreateRoadNetwork(roadRoot.transform);
         CreateBuildingWaypoints(buildingRoot.transform);
@@ -139,13 +146,83 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         renderer.color = new Color(1f, 1f, 1f, 0.65f);
     }
 
+    private void CreateProvidedArtwork(Transform parent)
+    {
+        CreateArtworkSprite(parent, "ART_SurfaceCityStrip", surfaceCityArtSprite, new Vector2(50f, 4.8f), 112f, -92, new Color(1f, 1f, 1f, 0.34f));
+        CreateArtworkSprite(parent, "ART_UndergroundCityStrip", undergroundCityArtSprite, new Vector2(50f, -5.15f), 102f, -91, new Color(1f, 1f, 1f, 0.28f));
+        CreateLocationArtwork(parent);
+        CreatePropArtwork(parent);
+    }
+
+    private void CreateLocationArtwork(Transform parent)
+    {
+        if (locationArtSprites == null) return;
+
+        Vector2[] positions =
+        {
+            new Vector2(10f, 2.15f),
+            new Vector2(24f, 2.05f),
+            new Vector2(74f, 2.15f),
+            new Vector2(17f, 1.1f),
+            new Vector2(62f, 2.6f),
+            new Vector2(84f, 2.2f),
+            new Vector2(8f, -4.25f),
+            new Vector2(31f, -4.25f),
+            new Vector2(87f, -4.25f)
+        };
+
+        float[] widths = { 12f, 12f, 12f, 11f, 11f, 11f, 10f, 10f, 10f };
+        int count = Mathf.Min(locationArtSprites.Length, positions.Length);
+
+        for (int i = 0; i < count; i++)
+            CreateArtworkSprite(parent, "ART_Location_" + i, locationArtSprites[i], positions[i], widths[i], -12, new Color(1f, 1f, 1f, 0.82f));
+    }
+
+    private void CreatePropArtwork(Transform parent)
+    {
+        if (propArtSprites == null) return;
+
+        Vector2[] positions =
+        {
+            new Vector2(22f, 0.9f),
+            new Vector2(74f, 0.95f),
+            new Vector2(37f, -2.1f),
+            new Vector2(54f, -3.8f)
+        };
+
+        float[] widths = { 16f, 14f, 14f, 14f };
+        int count = Mathf.Min(propArtSprites.Length, positions.Length);
+
+        for (int i = 0; i < count; i++)
+            CreateArtworkSprite(parent, "ART_Props_" + i, propArtSprites[i], positions[i], widths[i], 2, new Color(1f, 1f, 1f, 0.8f));
+    }
+
+    private void CreateArtworkSprite(Transform parent, string objectName, Sprite sprite, Vector2 position, float targetWidth, int sortingOrder, Color color)
+    {
+        if (sprite == null || targetWidth <= 0f)
+            return;
+
+        GameObject artObject = new GameObject(objectName);
+        artObject.transform.SetParent(parent);
+        artObject.transform.localPosition = new Vector3(position.x, position.y, 0f);
+
+        SpriteRenderer renderer = artObject.AddComponent<SpriteRenderer>();
+        renderer.sprite = sprite;
+        renderer.color = color;
+        renderer.sortingOrder = sortingOrder;
+
+        float spriteWidth = Mathf.Max(0.01f, sprite.bounds.size.x);
+        float scale = targetWidth / spriteWidth;
+        artObject.transform.localScale = new Vector3(scale, scale, 1f);
+    }
+
     private void CreatePlatforms(Transform parent)
     {
-        CreateBox(parent, "MainStreet_Collider", new Vector2(48f, -0.65f), new Vector2(100f, 0.75f), new Color(0.24f, 0.19f, 0.15f, 0.82f), false);
-        CreateBox(parent, "BackAlley_Collider", new Vector2(36f, -2.55f), new Vector2(42f, 0.55f), new Color(0.18f, 0.16f, 0.14f, 0.75f), false);
-        CreateBox(parent, "Sewer_Collider", new Vector2(49f, -4.55f), new Vector2(92f, 0.7f), new Color(0.12f, 0.12f, 0.11f, 0.85f), false);
-        CreateBox(parent, "Rooftop_West_Collider", new Vector2(28f, 4.75f), new Vector2(38f, 0.55f), new Color(0.35f, 0.25f, 0.16f, 0.7f), false);
-        CreateBox(parent, "Rooftop_East_Collider", new Vector2(70f, 4.75f), new Vector2(46f, 0.55f), new Color(0.35f, 0.25f, 0.16f, 0.7f), false);
+        CreateBox(parent, "MainStreet_Collider", new Vector2(48f, -0.65f), new Vector2(100f, 0.75f), new Color(0.24f, 0.19f, 0.15f, 0.35f), false);
+        CreateBox(parent, "BackAlley_Collider", new Vector2(36f, -2.55f), new Vector2(42f, 0.55f), new Color(0.18f, 0.16f, 0.14f, 0.3f), false);
+        CreateBox(parent, "Sewer_Collider", new Vector2(49f, -4.55f), new Vector2(92f, 0.7f), new Color(0.12f, 0.12f, 0.11f, 0.35f), false);
+        CreateBox(parent, "Rooftop_West_Collider", new Vector2(28f, 4.75f), new Vector2(38f, 0.55f), new Color(0.35f, 0.25f, 0.16f, 0.32f), false);
+        CreateBox(parent, "Rooftop_East_Collider", new Vector2(70f, 4.75f), new Vector2(46f, 0.55f), new Color(0.35f, 0.25f, 0.16f, 0.32f), false);
 
         CreateLadder(parent, "Ladder_Culvert_To_Main", new Vector2(8f, -2.45f), 3.8f);
         CreateLadder(parent, "Ladder_Alley_To_Rooftop", new Vector2(36f, 1.2f), 7.0f);
@@ -178,7 +255,7 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
 
     private void CreateRoadArea(Transform parent, string objectName, string fromRouteNodeId, string toRouteNodeId, Vector2 position, Vector2 size)
     {
-        GameObject road = CreateBox(parent, objectName, position, size, new Color(0.18f, 0.34f, 0.42f, 0.22f), true);
+        GameObject road = CreateBox(parent, objectName, position, size, new Color(0.18f, 0.34f, 0.42f, 0.14f), true);
 
         SpriteRenderer renderer = road.GetComponent<SpriteRenderer>();
         renderer.sortingOrder = 1;

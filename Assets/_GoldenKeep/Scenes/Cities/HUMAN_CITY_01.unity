@@ -262,6 +262,23 @@ MonoBehaviour:
   civilianSprite: {fileID: 21300000, guid: de8097780c9ad53eeb403b3387fac5fe, type: 3}
   guardSprite: {fileID: 21300000, guid: e1ced20a272403eaeb33b05088b762f0, type: 3}
   playerSprite: {fileID: 21300000, guid: 16f3b0f01a72515e591c8b8eedb5785a, type: 3}
+  surfaceCityArtSprite: {fileID: 21300000, guid: 455a7ff6377747e3b0f0f161560918ce, type: 3}
+  undergroundCityArtSprite: {fileID: 21300000, guid: db6ac699f4074cefb26c6f11e3a2bfab, type: 3}
+  locationArtSprites:
+  - {fileID: 21300000, guid: fd1f6ed934a84382a7e4ed471e017464, type: 3}
+  - {fileID: 21300000, guid: acc7a0c7ea4a432b988b16f0d04a7c3e, type: 3}
+  - {fileID: 21300000, guid: 3d65c271622645debf008b1bf313c332, type: 3}
+  - {fileID: 21300000, guid: 82d8f4e1beac48f288d03897cc7e445d, type: 3}
+  - {fileID: 21300000, guid: 3662b08da1f148e0bd847b9efafc4813, type: 3}
+  - {fileID: 21300000, guid: 3d65c271622645debf008b1bf313c332, type: 3}
+  - {fileID: 21300000, guid: f49141e635344cbca0ebcaa5e50f0a11, type: 3}
+  - {fileID: 21300000, guid: 3662b08da1f148e0bd847b9efafc4813, type: 3}
+  - {fileID: 21300000, guid: 4e35815bfd54438b989d6f8431ed6799, type: 3}
+  propArtSprites:
+  - {fileID: 21300000, guid: b123723f0da74d5f9d50f4afd8eeec32, type: 3}
+  - {fileID: 21300000, guid: 410cffb655dc46ccb036804e4b298336, type: 3}
+  - {fileID: 21300000, guid: dbe610051b1d4f7781d1de86c886f441, type: 3}
+  - {fileID: 21300000, guid: e9ef4b7df9b6459286e8a1d31dc6bb07, type: 3}
   buildOnAwake: 1
   clearExistingGeneratedMap: 1
 --- !u!1660057539 &9223372036854775807

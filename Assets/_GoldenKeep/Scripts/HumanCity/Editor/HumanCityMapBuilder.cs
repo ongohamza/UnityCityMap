@@ -18,6 +18,29 @@ public static class HumanCityMapBuilder
     private const string GuardSpritePath = "Assets/Human Art/10.png";
     private const string PlayerSpritePath = "Assets/Human Art/gargoyle.png";
     private const string SolidSpritePath = "Assets/_GoldenKeep/Art/HumanCity/Generated/solid_pixel.png";
+    private const string SurfaceCityArtPath = "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_surface_city_strip.png";
+    private const string UndergroundCityArtPath = "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_underground_city_strip.png";
+
+    private static readonly string[] LocationArtPaths =
+    {
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_farmstead_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_market_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_gate_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_castle_gate_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_forge_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_gate_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_underground_spawn_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_forge_panel.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_secret_tunnel_panel.png"
+    };
+
+    private static readonly string[] PropArtPaths =
+    {
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_market_props_strip.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_gate_props_strip.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_back_alley_props_strip.png",
+        "Assets/_GoldenKeep/Art/HumanCity/Provided/provided_underground_props_strip.png"
+    };
 
     private static readonly Dictionary<string, Vector2> RoutePositions = new Dictionary<string, Vector2>
     {
@@ -51,6 +74,7 @@ public static class HumanCityMapBuilder
         ConfigureSpriteImport(CivilianSpritePath, 512f);
         ConfigureSpriteImport(GuardSpritePath, 512f);
         ConfigureSpriteImport(PlayerSpritePath, 512f);
+        ConfigureProvidedArtImports();
 
         Sprite solidSprite = GetSolidSprite();
         CitizenScheduleAgent civilianPrefab = CreateCitizenPrefab("PF_Citizen_Civilian", CivilianSpritePath, new Color(0.86f, 0.78f, 0.58f), 1);
@@ -70,6 +94,7 @@ public static class HumanCityMapBuilder
 
         Camera camera = CreateCamera();
         CreateBackdrop(visualRoot.transform);
+        CreateProvidedArtwork(visualRoot.transform);
         CreatePlatforms(platformRoot.transform, solidSprite);
         CreateRoadNetwork(roadRoot.transform, solidSprite);
         Dictionary<string, Transform> waypoints = CreateBuildingWaypoints(buildingRoot.transform, solidSprite);
@@ -148,13 +173,79 @@ public static class HumanCityMapBuilder
         renderer.color = new Color(1f, 1f, 1f, 0.65f);
     }
 
+    private static void CreateProvidedArtwork(Transform parent)
+    {
+        CreateArtworkSprite(parent, "ART_SurfaceCityStrip", AssetDatabase.LoadAssetAtPath<Sprite>(SurfaceCityArtPath), new Vector2(50f, 4.8f), 112f, -92, new Color(1f, 1f, 1f, 0.34f));
+        CreateArtworkSprite(parent, "ART_UndergroundCityStrip", AssetDatabase.LoadAssetAtPath<Sprite>(UndergroundCityArtPath), new Vector2(50f, -5.15f), 102f, -91, new Color(1f, 1f, 1f, 0.28f));
+        CreateLocationArtwork(parent);
+        CreatePropArtwork(parent);
+    }
+
+    private static void CreateLocationArtwork(Transform parent)
+    {
+        Vector2[] positions =
+        {
+            new Vector2(10f, 2.15f),
+            new Vector2(24f, 2.05f),
+            new Vector2(74f, 2.15f),
+            new Vector2(17f, 1.1f),
+            new Vector2(62f, 2.6f),
+            new Vector2(84f, 2.2f),
+            new Vector2(8f, -4.25f),
+            new Vector2(31f, -4.25f),
+            new Vector2(87f, -4.25f)
+        };
+
+        float[] widths = { 12f, 12f, 12f, 11f, 11f, 11f, 10f, 10f, 10f };
+        int count = Mathf.Min(LocationArtPaths.Length, positions.Length);
+
+        for (int i = 0; i < count; i++)
+            CreateArtworkSprite(parent, "ART_Location_" + i, AssetDatabase.LoadAssetAtPath<Sprite>(LocationArtPaths[i]), positions[i], widths[i], -12, new Color(1f, 1f, 1f, 0.82f));
+    }
+
+    private static void CreatePropArtwork(Transform parent)
+    {
+        Vector2[] positions =
+        {
+            new Vector2(22f, 0.9f),
+            new Vector2(74f, 0.95f),
+            new Vector2(37f, -2.1f),
+            new Vector2(54f, -3.8f)
+        };
+
+        float[] widths = { 16f, 14f, 14f, 14f };
+        int count = Mathf.Min(PropArtPaths.Length, positions.Length);
+
+        for (int i = 0; i < count; i++)
+            CreateArtworkSprite(parent, "ART_Props_" + i, AssetDatabase.LoadAssetAtPath<Sprite>(PropArtPaths[i]), positions[i], widths[i], 2, new Color(1f, 1f, 1f, 0.8f));
+    }
+
+    private static void CreateArtworkSprite(Transform parent, string objectName, Sprite sprite, Vector2 position, float targetWidth, int sortingOrder, Color color)
+    {
+        if (sprite == null || targetWidth <= 0f)
+            return;
+
+        GameObject artObject = new GameObject(objectName);
+        artObject.transform.SetParent(parent);
+        artObject.transform.localPosition = new Vector3(position.x, position.y, 0f);
+
+        SpriteRenderer renderer = artObject.AddComponent<SpriteRenderer>();
+        renderer.sprite = sprite;
+        renderer.color = color;
+        renderer.sortingOrder = sortingOrder;
+
+        float spriteWidth = Mathf.Max(0.01f, sprite.bounds.size.x);
+        float scale = targetWidth / spriteWidth;
+        artObject.transform.localScale = new Vector3(scale, scale, 1f);
+    }
+
     private static void CreatePlatforms(Transform parent, Sprite solidSprite)
     {
-        CreateBox(parent, "MainStreet_Collider", new Vector2(48f, -0.65f), new Vector2(100f, 0.75f), solidSprite, new Color(0.24f, 0.19f, 0.15f, 0.82f), false);
-        CreateBox(parent, "BackAlley_Collider", new Vector2(36f, -2.55f), new Vector2(42f, 0.55f), solidSprite, new Color(0.18f, 0.16f, 0.14f, 0.75f), false);
-        CreateBox(parent, "Sewer_Collider", new Vector2(49f, -4.55f), new Vector2(92f, 0.7f), solidSprite, new Color(0.12f, 0.12f, 0.11f, 0.85f), false);
-        CreateBox(parent, "Rooftop_West_Collider", new Vector2(28f, 4.75f), new Vector2(38f, 0.55f), solidSprite, new Color(0.35f, 0.25f, 0.16f, 0.7f), false);
-        CreateBox(parent, "Rooftop_East_Collider", new Vector2(70f, 4.75f), new Vector2(46f, 0.55f), solidSprite, new Color(0.35f, 0.25f, 0.16f, 0.7f), false);
+        CreateBox(parent, "MainStreet_Collider", new Vector2(48f, -0.65f), new Vector2(100f, 0.75f), solidSprite, new Color(0.24f, 0.19f, 0.15f, 0.35f), false);
+        CreateBox(parent, "BackAlley_Collider", new Vector2(36f, -2.55f), new Vector2(42f, 0.55f), solidSprite, new Color(0.18f, 0.16f, 0.14f, 0.3f), false);
+        CreateBox(parent, "Sewer_Collider", new Vector2(49f, -4.55f), new Vector2(92f, 0.7f), solidSprite, new Color(0.12f, 0.12f, 0.11f, 0.35f), false);
+        CreateBox(parent, "Rooftop_West_Collider", new Vector2(28f, 4.75f), new Vector2(38f, 0.55f), solidSprite, new Color(0.35f, 0.25f, 0.16f, 0.32f), false);
+        CreateBox(parent, "Rooftop_East_Collider", new Vector2(70f, 4.75f), new Vector2(46f, 0.55f), solidSprite, new Color(0.35f, 0.25f, 0.16f, 0.32f), false);
 
         CreateLadder(parent, "Ladder_Culvert_To_Main", new Vector2(8f, -2.45f), 3.8f, solidSprite);
         CreateLadder(parent, "Ladder_Alley_To_Rooftop", new Vector2(36f, 1.2f), 7.0f, solidSprite);
@@ -188,7 +279,7 @@ public static class HumanCityMapBuilder
 
     private static void CreateRoadArea(Transform parent, Sprite solidSprite, string objectName, string fromRouteNodeId, string toRouteNodeId, Vector2 position, Vector2 size)
     {
-        GameObject road = CreateBox(parent, objectName, position, size, solidSprite, new Color(0.18f, 0.34f, 0.42f, 0.22f), true);
+        GameObject road = CreateBox(parent, objectName, position, size, solidSprite, new Color(0.18f, 0.34f, 0.42f, 0.14f), true);
 
         SpriteRenderer renderer = road.GetComponent<SpriteRenderer>();
         renderer.sortingOrder = 1;
@@ -454,6 +545,18 @@ public static class HumanCityMapBuilder
         importer.filterMode = FilterMode.Point;
         importer.textureCompression = TextureImporterCompression.Uncompressed;
         importer.SaveAndReimport();
+    }
+
+    private static void ConfigureProvidedArtImports()
+    {
+        ConfigureSpriteImport(SurfaceCityArtPath, 100f);
+        ConfigureSpriteImport(UndergroundCityArtPath, 100f);
+
+        foreach (string artPath in LocationArtPaths)
+            ConfigureSpriteImport(artPath, 100f);
+
+        foreach (string artPath in PropArtPaths)
+            ConfigureSpriteImport(artPath, 100f);
     }
 
     private static Color GetBuildingColor(string buildingType)

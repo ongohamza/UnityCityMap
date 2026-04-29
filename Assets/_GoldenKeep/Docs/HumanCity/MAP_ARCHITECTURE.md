@@ -8,6 +8,7 @@ The primitive is a city ID:
 - Route node IDs such as `R05_BAKERY_DISTRACTION`.
 - Citizen IDs such as `HCN_001`.
 - Road areas generated from route nodes and route graph edges.
+- Provided art sprites cropped from the source sheets in `Assets/Human Art`.
 
 The scene, schedules, alarm triggers, objectives, and art all connect through those IDs. This keeps the map replaceable without rewriting the gameplay systems.
 
@@ -16,6 +17,7 @@ The scene, schedules, alarm triggers, objectives, and art all connect through th
 - Data: JSON files in `Assets/_GoldenKeep/Data/HumanCity/`.
 - Runtime scene builder: `HumanCityRuntimeBootstrap` creates the playable map from data and art when the scene starts.
 - Editor scene builder: `HumanCityMapBuilder` can bake the same idea into edit-time objects later.
+- City art layer: provided sprite strips and panels fill the city while staying separate from colliders/triggers.
 - Schedule simulation: `CityScheduleManager` and `CitizenScheduleAgent`.
 - Alarm/objective loop: `CityAlarmDirector`, route triggers, loot, escape, and distraction scripts.
 - Player road traversal: `HumanCityPlayerController` reads WASD input and stays inside `HumanCityRoadArea` bounds.
