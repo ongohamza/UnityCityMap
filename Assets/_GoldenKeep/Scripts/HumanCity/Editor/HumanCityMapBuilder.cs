@@ -66,14 +66,18 @@ public static class HumanCityMapBuilder
         GameObject citizenRoot = CreateRoot("CITY_CITIZENS", root.transform);
         GameObject systemsRoot = CreateRoot("CITY_SYSTEMS", root.transform);
         GameObject platformRoot = CreateRoot("CITY_PLATFORMS", root.transform);
+        GameObject roadRoot = CreateRoot("CITY_ROADS", root.transform);
 
-        CreateCamera();
+        Camera camera = CreateCamera();
         CreateBackdrop(visualRoot.transform);
         CreatePlatforms(platformRoot.transform, solidSprite);
+        CreateRoadNetwork(roadRoot.transform, solidSprite);
         Dictionary<string, Transform> waypoints = CreateBuildingWaypoints(buildingRoot.transform, solidSprite);
         CreateRouteTriggers(routeRoot.transform, solidSprite);
         CreateObjectiveObjects(routeRoot.transform, solidSprite);
-        CreatePlayer(playerPrefab);
+        GameObject player = CreatePlayer(playerPrefab);
+        if (player != null)
+            AttachCameraFollow(camera, player.transform);
         CreateSystems(systemsRoot.transform, citizenRoot.transform, civilianPrefab, guardPrefab);
         CreateManifest(root);
 
@@ -117,7 +121,7 @@ public static class HumanCityMapBuilder
         return root;
     }
 
-    private static void CreateCamera()
+    private static Camera CreateCamera()
     {
         GameObject cameraObject = new GameObject("Main Camera");
         Camera camera = cameraObject.AddComponent<Camera>();
@@ -126,6 +130,7 @@ public static class HumanCityMapBuilder
         camera.backgroundColor = new Color(0.09f, 0.08f, 0.08f);
         camera.transform.position = new Vector3(48f, 0.5f, -20f);
         AssignTag(cameraObject, "MainCamera");
+        return camera;
     }
 
     private static void CreateBackdrop(Transform parent)
@@ -155,6 +160,43 @@ public static class HumanCityMapBuilder
         CreateLadder(parent, "Ladder_Alley_To_Rooftop", new Vector2(36f, 1.2f), 7.0f, solidSprite);
         CreateLadder(parent, "Ladder_Chapel_To_Sewer", new Vector2(62f, -2f), 5.3f, solidSprite);
         CreateLadder(parent, "Ladder_Storehouse_Grate", new Vector2(88f, -2.1f), 4.2f, solidSprite);
+    }
+
+    private static void CreateRoadNetwork(Transform parent, Sprite solidSprite)
+    {
+        foreach (KeyValuePair<string, Vector2> route in RoutePositions)
+            CreateRoadArea(parent, solidSprite, "ROAD_NODE_" + route.Key, route.Key, string.Empty, route.Value, new Vector2(2.4f, 2.4f));
+
+        TextAsset routeGraphJson = AssetDatabase.LoadAssetAtPath<TextAsset>(RouteGraphPath);
+        if (routeGraphJson == null)
+            return;
+
+        CityRouteGraphDatabase graph = JsonUtility.FromJson<CityRouteGraphDatabase>(routeGraphJson.text);
+        if (graph == null || graph.edges == null)
+            return;
+
+        foreach (CityRouteEdgeRecord edge in graph.edges)
+        {
+            if (!RoutePositions.TryGetValue(edge.from, out Vector2 from) || !RoutePositions.TryGetValue(edge.to, out Vector2 to))
+                continue;
+
+            Vector2 center = (from + to) * 0.5f;
+            Vector2 size = new Vector2(Mathf.Abs(from.x - to.x) + 2.4f, Mathf.Abs(from.y - to.y) + 2.4f);
+            CreateRoadArea(parent, solidSprite, "ROAD_EDGE_" + edge.from + "_TO_" + edge.to, edge.from, edge.to, center, size);
+        }
+    }
+
+    private static void CreateRoadArea(Transform parent, Sprite solidSprite, string objectName, string fromRouteNodeId, string toRouteNodeId, Vector2 position, Vector2 size)
+    {
+        GameObject road = CreateBox(parent, objectName, position, size, solidSprite, new Color(0.18f, 0.34f, 0.42f, 0.22f), true);
+
+        SpriteRenderer renderer = road.GetComponent<SpriteRenderer>();
+        renderer.sortingOrder = 1;
+
+        HumanCityRoadArea roadArea = road.AddComponent<HumanCityRoadArea>();
+        roadArea.roadAreaId = objectName;
+        roadArea.fromRouteNodeId = fromRouteNodeId;
+        roadArea.toRouteNodeId = toRouteNodeId;
     }
 
     private static Dictionary<string, Transform> CreateBuildingWaypoints(Transform parent, Sprite solidSprite)
@@ -276,13 +318,25 @@ public static class HumanCityMapBuilder
         manifest.visualReferencePath = VisualReferencePath;
     }
 
-    private static void CreatePlayer(GameObject playerPrefab)
+    private static GameObject CreatePlayer(GameObject playerPrefab)
     {
         GameObject player = PrefabUtility.InstantiatePrefab(playerPrefab) as GameObject;
-        if (player == null) return;
+        if (player == null) return null;
 
         player.name = "Player_RaidTester";
         player.transform.position = new Vector3(4f, -2.1f, 0f);
+        return player;
+    }
+
+    private static void AttachCameraFollow(Camera camera, Transform player)
+    {
+        HumanCityCameraFollow follow = camera.gameObject.AddComponent<HumanCityCameraFollow>();
+        follow.target = player;
+        follow.targetOffset = new Vector2(0f, 1.8f);
+        follow.minPosition = new Vector2(4f, -3.2f);
+        follow.maxPosition = new Vector2(96f, 5.4f);
+        follow.followSpeed = 18f;
+        follow.SnapToTarget();
     }
 
     private static CitizenScheduleAgent CreateCitizenPrefab(string prefabName, string spritePath, Color tint, int alarmAmount)
@@ -335,10 +389,12 @@ public static class HumanCityMapBuilder
         renderer.color = new Color(1f, 0.45f, 0.35f);
 
         Rigidbody2D body = prefabRoot.AddComponent<Rigidbody2D>();
-        body.gravityScale = 3.5f;
+        body.bodyType = RigidbodyType2D.Kinematic;
+        body.gravityScale = 0f;
         body.freezeRotation = true;
 
         CapsuleCollider2D collider = prefabRoot.AddComponent<CapsuleCollider2D>();
+        collider.isTrigger = true;
         collider.size = new Vector2(1.4f, 2.5f);
 
         prefabRoot.AddComponent<HumanCityPlayerController>();

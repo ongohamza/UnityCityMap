@@ -7,6 +7,7 @@ The primitive is a city ID:
 - Building IDs such as `B17_STOREHOUSE`.
 - Route node IDs such as `R05_BAKERY_DISTRACTION`.
 - Citizen IDs such as `HCN_001`.
+- Road areas generated from route nodes and route graph edges.
 
 The scene, schedules, alarm triggers, objectives, and art all connect through those IDs. This keeps the map replaceable without rewriting the gameplay systems.
 
@@ -17,7 +18,7 @@ The scene, schedules, alarm triggers, objectives, and art all connect through th
 - Editor scene builder: `HumanCityMapBuilder` can bake the same idea into edit-time objects later.
 - Schedule simulation: `CityScheduleManager` and `CitizenScheduleAgent`.
 - Alarm/objective loop: `CityAlarmDirector`, route triggers, loot, escape, and distraction scripts.
-- Player test harness: `HumanCityPlayerController`.
+- Player road traversal: `HumanCityPlayerController` reads WASD input and stays inside `HumanCityRoadArea` bounds.
 - Camera traversal view: `HumanCityCameraFollow` tracks the player inside city bounds.
 
 Each box can be replaced as long as it keeps the same ID-based interface.

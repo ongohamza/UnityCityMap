@@ -7,116 +7,104 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider2D))]
 public class HumanCityPlayerController : MonoBehaviour
 {
-    public float moveSpeed = 7f;
-    public float climbSpeed = 5f;
-    public float jumpImpulse = 11f;
-    public LayerMask groundMask = ~0;
+    public float moveSpeed = 8f;
+    public float roadProbeRadius = 0.35f;
+    public bool constrainToRoads = true;
 
     private Rigidbody2D body;
-    private Collider2D bodyCollider;
-    private int ladderContacts;
-    private bool jumpQueued;
+    private HumanCityRoadArea[] roadAreas;
+    private bool roadAreasAvailable;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        bodyCollider = GetComponent<Collider2D>();
+        body.bodyType = RigidbodyType2D.Kinematic;
+        body.gravityScale = 0f;
         body.freezeRotation = true;
+
+        Collider2D bodyCollider = GetComponent<Collider2D>();
+        bodyCollider.isTrigger = true;
     }
 
-    private void Update()
+    private void Start()
     {
-        if (IsJumpPressed())
-            jumpQueued = true;
+        roadAreas = FindObjectsByType<HumanCityRoadArea>(FindObjectsSortMode.None);
+        roadAreasAvailable = roadAreas.Length > 0;
     }
 
     private void FixedUpdate()
     {
-        float horizontal = ReadHorizontal();
-        float vertical = ReadVertical();
-        Vector2 velocity = body.linearVelocity;
+        Vector2 moveInput = ReadMoveInput();
+        if (moveInput.sqrMagnitude > 1f)
+            moveInput.Normalize();
 
-        velocity.x = horizontal * moveSpeed;
+        Vector2 current = body.position;
+        Vector2 delta = moveInput * moveSpeed * Time.fixedDeltaTime;
+        Vector2 next = current + delta;
 
-        if (ladderContacts > 0 && Mathf.Abs(vertical) > 0.01f)
+        if (CanMoveTo(next))
         {
-            velocity.y = vertical * climbSpeed;
-        }
-        else if (jumpQueued && IsGrounded())
-        {
-            velocity.y = jumpImpulse;
+            body.MovePosition(next);
+            return;
         }
 
-        body.linearVelocity = velocity;
-        jumpQueued = false;
+        TryMoveOnSingleAxis(current, delta);
     }
 
-    private bool IsGrounded()
+    private void TryMoveOnSingleAxis(Vector2 current, Vector2 delta)
     {
-        return bodyCollider != null && bodyCollider.IsTouchingLayers(groundMask);
+        Vector2 firstAxis = Mathf.Abs(delta.x) >= Mathf.Abs(delta.y)
+            ? new Vector2(delta.x, 0f)
+            : new Vector2(0f, delta.y);
+        Vector2 secondAxis = firstAxis.x != 0f
+            ? new Vector2(0f, delta.y)
+            : new Vector2(delta.x, 0f);
+
+        Vector2 next = current + firstAxis;
+        if (CanMoveTo(next))
+        {
+            body.MovePosition(next);
+            return;
+        }
+
+        next = current + secondAxis;
+        if (CanMoveTo(next))
+            body.MovePosition(next);
     }
 
-    private float ReadHorizontal()
+    private bool CanMoveTo(Vector2 position)
     {
-        float value = 0f;
+        if (!constrainToRoads || !roadAreasAvailable)
+            return true;
+
+        for (int i = 0; i < roadAreas.Length; i++)
+        {
+            if (roadAreas[i] != null && roadAreas[i].Contains(position, roadProbeRadius))
+                return true;
+        }
+
+        return false;
+    }
+
+    private Vector2 ReadMoveInput()
+    {
+        Vector2 value = Vector2.zero;
 #if ENABLE_INPUT_SYSTEM
         Keyboard keyboard = Keyboard.current;
         if (keyboard != null)
         {
-            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) value -= 1f;
-            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) value += 1f;
+            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) value.x -= 1f;
+            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) value.x += 1f;
+            if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed) value.y -= 1f;
+            if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed) value.y += 1f;
         }
 #endif
 #if ENABLE_LEGACY_INPUT_MANAGER
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) value -= 1f;
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) value += 1f;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) value.x -= 1f;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) value.x += 1f;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) value.y -= 1f;
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) value.y += 1f;
 #endif
-        return Mathf.Clamp(value, -1f, 1f);
-    }
-
-    private float ReadVertical()
-    {
-        float value = 0f;
-#if ENABLE_INPUT_SYSTEM
-        Keyboard keyboard = Keyboard.current;
-        if (keyboard != null)
-        {
-            if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed) value -= 1f;
-            if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed) value += 1f;
-        }
-#endif
-#if ENABLE_LEGACY_INPUT_MANAGER
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) value -= 1f;
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) value += 1f;
-#endif
-        return Mathf.Clamp(value, -1f, 1f);
-    }
-
-    private bool IsJumpPressed()
-    {
-        bool pressed = false;
-#if ENABLE_INPUT_SYSTEM
-        Keyboard keyboard = Keyboard.current;
-        pressed |= keyboard != null &&
-                   (keyboard.spaceKey.wasPressedThisFrame ||
-                    keyboard.wKey.wasPressedThisFrame ||
-                    keyboard.upArrowKey.wasPressedThisFrame);
-#endif
-#if ENABLE_LEGACY_INPUT_MANAGER
-        pressed |= Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-#endif
-        return pressed;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.GetComponent<HumanCityLadderZone>() != null)
-            ladderContacts++;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.GetComponent<HumanCityLadderZone>() != null)
-            ladderContacts = Mathf.Max(0, ladderContacts - 1);
+        return value;
     }
 }

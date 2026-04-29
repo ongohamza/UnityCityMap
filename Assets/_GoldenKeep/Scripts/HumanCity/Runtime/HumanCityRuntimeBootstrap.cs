@@ -69,11 +69,13 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         GameObject citizenRoot = CreateRoot("CITY_CITIZENS", root.transform);
         GameObject systemsRoot = CreateRoot("CITY_SYSTEMS", root.transform);
         GameObject platformRoot = CreateRoot("CITY_PLATFORMS", root.transform);
+        GameObject roadRoot = CreateRoot("CITY_ROADS", root.transform);
         GameObject templateRoot = CreateRoot("CITY_RUNTIME_TEMPLATES", root.transform);
 
         Camera camera = ConfigureCamera();
         CreateBackdrop(visualRoot.transform);
         CreatePlatforms(platformRoot.transform);
+        CreateRoadNetwork(roadRoot.transform);
         CreateBuildingWaypoints(buildingRoot.transform);
         CreateRouteTriggers(routeRoot.transform);
         CreateObjectiveObjects(routeRoot.transform);
@@ -149,6 +151,42 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         CreateLadder(parent, "Ladder_Alley_To_Rooftop", new Vector2(36f, 1.2f), 7.0f);
         CreateLadder(parent, "Ladder_Chapel_To_Sewer", new Vector2(62f, -2f), 5.3f);
         CreateLadder(parent, "Ladder_Storehouse_Grate", new Vector2(88f, -2.1f), 4.2f);
+    }
+
+    private void CreateRoadNetwork(Transform parent)
+    {
+        foreach (KeyValuePair<string, Vector2> route in RoutePositions)
+            CreateRoadArea(parent, "ROAD_NODE_" + route.Key, route.Key, string.Empty, route.Value, new Vector2(2.4f, 2.4f));
+
+        if (routeGraphJson == null)
+            return;
+
+        CityRouteGraphDatabase graph = JsonUtility.FromJson<CityRouteGraphDatabase>(routeGraphJson.text);
+        if (graph == null || graph.edges == null)
+            return;
+
+        foreach (CityRouteEdgeRecord edge in graph.edges)
+        {
+            if (!RoutePositions.TryGetValue(edge.from, out Vector2 from) || !RoutePositions.TryGetValue(edge.to, out Vector2 to))
+                continue;
+
+            Vector2 center = (from + to) * 0.5f;
+            Vector2 size = new Vector2(Mathf.Abs(from.x - to.x) + 2.4f, Mathf.Abs(from.y - to.y) + 2.4f);
+            CreateRoadArea(parent, "ROAD_EDGE_" + edge.from + "_TO_" + edge.to, edge.from, edge.to, center, size);
+        }
+    }
+
+    private void CreateRoadArea(Transform parent, string objectName, string fromRouteNodeId, string toRouteNodeId, Vector2 position, Vector2 size)
+    {
+        GameObject road = CreateBox(parent, objectName, position, size, new Color(0.18f, 0.34f, 0.42f, 0.22f), true);
+
+        SpriteRenderer renderer = road.GetComponent<SpriteRenderer>();
+        renderer.sortingOrder = 1;
+
+        HumanCityRoadArea roadArea = road.AddComponent<HumanCityRoadArea>();
+        roadArea.roadAreaId = objectName;
+        roadArea.fromRouteNodeId = fromRouteNodeId;
+        roadArea.toRouteNodeId = toRouteNodeId;
     }
 
     private void CreateBuildingWaypoints(Transform parent)
@@ -270,10 +308,12 @@ public class HumanCityRuntimeBootstrap : MonoBehaviour
         renderer.color = new Color(1f, 0.45f, 0.35f);
 
         Rigidbody2D body = player.AddComponent<Rigidbody2D>();
-        body.gravityScale = 3.5f;
+        body.bodyType = RigidbodyType2D.Kinematic;
+        body.gravityScale = 0f;
         body.freezeRotation = true;
 
         CapsuleCollider2D collider = player.AddComponent<CapsuleCollider2D>();
+        collider.isTrigger = true;
         collider.size = new Vector2(1.4f, 2.5f);
 
         player.AddComponent<HumanCityPlayerController>();
