@@ -1,0 +1,323 @@
+{
+  "buildings": [
+    {
+      "id": "B01_NORTH_GATE",
+      "name": "North Gate",
+      "type": "gate",
+      "zone": "Outer Wall",
+      "x": 0,
+      "y": 0,
+      "function": "main guard checkpoint; high danger",
+      "routes": [
+        "main_street",
+        "wall_walk"
+      ]
+    },
+    {
+      "id": "B02_CAVE_CULVERT",
+      "name": "Old Drain Culvert",
+      "type": "secret_entry",
+      "zone": "Underground Edge",
+      "x": 4,
+      "y": -3,
+      "function": "low route from darkness tunnel into city drain",
+      "routes": [
+        "sewer",
+        "alley"
+      ]
+    },
+    {
+      "id": "B03_WELL",
+      "name": "Market Well",
+      "type": "utility",
+      "zone": "Market",
+      "x": 14,
+      "y": 0,
+      "function": "citizen gathering node; useful for observation",
+      "routes": [
+        "market"
+      ]
+    },
+    {
+      "id": "B04_MARKET",
+      "name": "Market Square",
+      "type": "public",
+      "zone": "Market",
+      "x": 18,
+      "y": 0,
+      "function": "busy midday crowd; dangerous during alarm",
+      "routes": [
+        "main_street",
+        "rooftop_access"
+      ]
+    },
+    {
+      "id": "B05_BAKERY",
+      "name": "Baker\u2019s Oven",
+      "type": "shop",
+      "zone": "Market",
+      "x": 22,
+      "y": 0,
+      "function": "smoke/noise distraction source",
+      "routes": [
+        "main_street",
+        "back_alley"
+      ]
+    },
+    {
+      "id": "B06_BLACKSMITH",
+      "name": "Blacksmith Forge",
+      "type": "shop",
+      "zone": "Craft Row",
+      "x": 28,
+      "y": 0,
+      "function": "tough civilian/militia activity; can create tool/noise route",
+      "routes": [
+        "main_street"
+      ]
+    },
+    {
+      "id": "B07_TAVERN",
+      "name": "The Silver Mug Tavern",
+      "type": "public",
+      "zone": "Market",
+      "x": 34,
+      "y": 0,
+      "function": "evening guard/citizen congregation; risky but informative",
+      "routes": [
+        "main_street",
+        "back_alley"
+      ]
+    },
+    {
+      "id": "B08_STABLE",
+      "name": "City Stable",
+      "type": "utility",
+      "zone": "Outer Yard",
+      "x": 40,
+      "y": 0,
+      "function": "mount/noise distraction; patrol route changes",
+      "routes": [
+        "back_alley"
+      ]
+    },
+    {
+      "id": "B09_BARRACKS",
+      "name": "Blue Shield Barracks",
+      "type": "military",
+      "zone": "Guard District",
+      "x": 48,
+      "y": 0,
+      "function": "guard source; extremely dangerous if alarm rises",
+      "routes": [
+        "main_street",
+        "wall_walk"
+      ]
+    },
+    {
+      "id": "B10_WATCH_WEST",
+      "name": "West Watchtower",
+      "type": "military",
+      "zone": "Wall",
+      "x": 55,
+      "y": 5,
+      "function": "archer sightline; rooftop route danger",
+      "routes": [
+        "wall_walk",
+        "rooftop"
+      ]
+    },
+    {
+      "id": "B11_WATCH_EAST",
+      "name": "East Watchtower",
+      "type": "military",
+      "zone": "Wall",
+      "x": 82,
+      "y": 5,
+      "function": "archer sightline near storehouse",
+      "routes": [
+        "wall_walk",
+        "rooftop"
+      ]
+    },
+    {
+      "id": "B12_CHAPEL",
+      "name": "Saint Auric Chapel",
+      "type": "religious",
+      "zone": "Chapel Yard",
+      "x": 62,
+      "y": 0,
+      "function": "bell alarm and relic; crowd node",
+      "routes": [
+        "main_street",
+        "rooftop",
+        "graveyard"
+      ]
+    },
+    {
+      "id": "B13_CEMETERY",
+      "name": "Old Cemetery",
+      "type": "quiet",
+      "zone": "Chapel Yard",
+      "x": 66,
+      "y": -1,
+      "function": "low traffic route, but priest and gravedigger visit",
+      "routes": [
+        "graveyard",
+        "sewer"
+      ]
+    },
+    {
+      "id": "B14_TAILOR",
+      "name": "Goldthread Tailor",
+      "type": "shop",
+      "zone": "Market",
+      "x": 26,
+      "y": 0,
+      "function": "civilian route and disguise-like future hook",
+      "routes": [
+        "main_street"
+      ]
+    },
+    {
+      "id": "B15_APOTHECARY",
+      "name": "Moonleaf Apothecary",
+      "type": "shop",
+      "zone": "Market",
+      "x": 30,
+      "y": 0,
+      "function": "medicine/poison future hook; civilian schedule node",
+      "routes": [
+        "main_street",
+        "back_alley"
+      ]
+    },
+    {
+      "id": "B16_CARPENTER",
+      "name": "Carpenter Shed",
+      "type": "shop",
+      "zone": "Craft Row",
+      "x": 38,
+      "y": 0,
+      "function": "barricade/building repair activity",
+      "routes": [
+        "back_alley"
+      ]
+    },
+    {
+      "id": "B17_STOREHOUSE",
+      "name": "Lord\u2019s Storehouse",
+      "type": "objective",
+      "zone": "Inner Yard",
+      "x": 90,
+      "y": 0,
+      "function": "main loot target; guarded heavily",
+      "routes": [
+        "main_street",
+        "sewer",
+        "rooftop"
+      ]
+    },
+    {
+      "id": "B18_MAYOR_HOUSE",
+      "name": "Mayor\u2019s House",
+      "type": "authority",
+      "zone": "Inner Yard",
+      "x": 76,
+      "y": 0,
+      "function": "paperwork/key future hook; elite guard nearby",
+      "routes": [
+        "main_street",
+        "garden"
+      ]
+    },
+    {
+      "id": "B19_SCHOOL",
+      "name": "Scribe School",
+      "type": "public",
+      "zone": "Market",
+      "x": 16,
+      "y": 0,
+      "function": "scribe/civilian movement node; no combat reward",
+      "routes": [
+        "market"
+      ]
+    },
+    {
+      "id": "B20_RIVER_BRIDGE",
+      "name": "River Bridge",
+      "type": "crossing",
+      "zone": "Outer Yard",
+      "x": 44,
+      "y": 0,
+      "function": "choke point between market and guard district",
+      "routes": [
+        "main_street",
+        "river_bed"
+      ]
+    },
+    {
+      "id": "B21_BACK_ALLEY",
+      "name": "Back Alley",
+      "type": "route",
+      "zone": "Rear Lots",
+      "x": 36,
+      "y": -2,
+      "function": "stealth route behind shops; schedule-dependent",
+      "routes": [
+        "back_alley",
+        "sewer"
+      ]
+    },
+    {
+      "id": "B22_ROOFTOPS",
+      "name": "Rooftop Line",
+      "type": "route",
+      "zone": "Upper City",
+      "x": 50,
+      "y": 6,
+      "function": "high route above city; archer risk",
+      "routes": [
+        "rooftop",
+        "wall_walk"
+      ]
+    },
+    {
+      "id": "B23_SEWER",
+      "name": "Sewer Run",
+      "type": "route",
+      "zone": "Undercity",
+      "x": 52,
+      "y": -4,
+      "function": "low route under city; locked by grate in later versions",
+      "routes": [
+        "sewer"
+      ]
+    },
+    {
+      "id": "B24_TOWN_BELL",
+      "name": "Town Bell Pull",
+      "type": "alarm",
+      "zone": "Chapel Yard",
+      "x": 64,
+      "y": 4,
+      "function": "alarm node; citizens/guards react",
+      "routes": [
+        "chapel"
+      ]
+    },
+    {
+      "id": "B25_EXIT_TUNNEL",
+      "name": "Return Tunnel",
+      "type": "exit",
+      "zone": "Underground Edge",
+      "x": 96,
+      "y": -3,
+      "function": "escape after loot; opens after objective",
+      "routes": [
+        "sewer",
+        "retreat"
+      ]
+    }
+  ]
+}

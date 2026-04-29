@@ -1,0 +1,202 @@
+citizenId,name,role,start,end,locationId,activity
+HCN_001,Alden Brask,guard,06:00,09:00,B01_NORTH_GATE,report
+HCN_001,Alden Brask,guard,09:00,12:00,B09_BARRACKS,patrol
+HCN_001,Alden Brask,guard,12:00,15:00,B20_RIVER_BRIDGE,watch
+HCN_001,Alden Brask,guard,15:00,18:00,B17_STOREHOUSE,meal rotation
+HCN_002,Mira Hollen,baker,06:00,09:00,B05_BAKERY,open shop
+HCN_002,Mira Hollen,baker,09:00,12:00,B03_WELL,serve/work
+HCN_002,Mira Hollen,baker,12:00,15:00,B04_MARKET,market errand
+HCN_002,Mira Hollen,baker,15:00,18:00,B07_TAVERN,evening cleanup
+HCN_002,Mira Hollen,baker,18:00,22:00,B05_BAKERY,tavern/social
+HCN_003,Tobin Vale,farmer,06:00,09:00,B01_NORTH_GATE,work
+HCN_003,Tobin Vale,farmer,09:00,12:00,B04_MARKET,market errand
+HCN_003,Tobin Vale,farmer,12:00,15:00,B05_BAKERY,meal/social
+HCN_004,Sera Valewick,market vendor,06:00,09:00,B04_MARKET,work
+HCN_004,Sera Valewick,market vendor,09:00,12:00,B03_WELL,market errand
+HCN_004,Sera Valewick,market vendor,12:00,15:00,B07_TAVERN,meal/social
+HCN_004,Sera Valewick,market vendor,15:00,18:00,B04_MARKET,patrol
+HCN_005,Garron Holt,blacksmith,06:00,09:00,B06_BLACKSMITH,open shop
+HCN_005,Garron Holt,blacksmith,09:00,12:00,B21_BACK_ALLEY,serve/work
+HCN_005,Garron Holt,blacksmith,12:00,15:00,B07_TAVERN,market errand
+HCN_005,Garron Holt,blacksmith,15:00,18:00,B06_BLACKSMITH,evening cleanup
+HCN_005,Garron Holt,blacksmith,18:00,22:00,B21_BACK_ALLEY,tavern/social
+HCN_006,Elric Dane,footman,06:00,09:00,B09_BARRACKS,report
+HCN_006,Elric Dane,footman,09:00,12:00,B04_MARKET,patrol
+HCN_006,Elric Dane,footman,12:00,15:00,B20_RIVER_BRIDGE,watch
+HCN_007,Nella Reed,water carrier,06:00,09:00,B03_WELL,work
+HCN_007,Nella Reed,water carrier,09:00,12:00,B05_BAKERY,market errand
+HCN_007,Nella Reed,water carrier,12:00,15:00,B12_CHAPEL,meal/social
+HCN_007,Nella Reed,water carrier,15:00,18:00,B03_WELL,patrol
+HCN_008,Father Caldus,priest,06:00,09:00,B12_CHAPEL,morning prayer
+HCN_008,Father Caldus,priest,09:00,12:00,B03_WELL,well/market visit
+HCN_008,Father Caldus,priest,12:00,15:00,B13_CEMETERY,chapel duty
+HCN_008,Father Caldus,priest,15:00,18:00,B24_TOWN_BELL,bell readiness
+HCN_008,Father Caldus,priest,18:00,22:00,B12_CHAPEL,evening service
+HCN_009,Brina Moss,apothecary,06:00,09:00,B15_APOTHECARY,open shop
+HCN_009,Brina Moss,apothecary,09:00,12:00,B21_BACK_ALLEY,serve/work
+HCN_009,Brina Moss,apothecary,12:00,15:00,B13_CEMETERY,market errand
+HCN_010,Joric Fen,stablehand,06:00,09:00,B08_STABLE,work
+HCN_010,Joric Fen,stablehand,09:00,12:00,B20_RIVER_BRIDGE,market errand
+HCN_010,Joric Fen,stablehand,12:00,15:00,B09_BARRACKS,meal/social
+HCN_010,Joric Fen,stablehand,15:00,18:00,B08_STABLE,patrol
+HCN_011,Tessa Goldthread,tailor,06:00,09:00,B14_TAILOR,open shop
+HCN_011,Tessa Goldthread,tailor,09:00,12:00,B04_MARKET,serve/work
+HCN_011,Tessa Goldthread,tailor,12:00,15:00,B07_TAVERN,market errand
+HCN_011,Tessa Goldthread,tailor,15:00,18:00,B14_TAILOR,evening cleanup
+HCN_011,Tessa Goldthread,tailor,18:00,22:00,B04_MARKET,tavern/social
+HCN_012,Captain Varro,captain,06:00,09:00,B09_BARRACKS,report
+HCN_012,Captain Varro,captain,09:00,12:00,B18_MAYOR_HOUSE,patrol
+HCN_012,Captain Varro,captain,12:00,15:00,B17_STOREHOUSE,watch
+HCN_013,Lysa Tern,scribe,06:00,09:00,B19_SCHOOL,work
+HCN_013,Lysa Tern,scribe,09:00,12:00,B18_MAYOR_HOUSE,market errand
+HCN_013,Lysa Tern,scribe,12:00,15:00,B04_MARKET,meal/social
+HCN_013,Lysa Tern,scribe,15:00,18:00,B19_SCHOOL,patrol
+HCN_014,Marek Stone,carpenter,06:00,09:00,B16_CARPENTER,open shop
+HCN_014,Marek Stone,carpenter,09:00,12:00,B21_BACK_ALLEY,serve/work
+HCN_014,Marek Stone,carpenter,12:00,15:00,B09_BARRACKS,market errand
+HCN_014,Marek Stone,carpenter,15:00,18:00,B16_CARPENTER,evening cleanup
+HCN_014,Marek Stone,carpenter,18:00,22:00,B21_BACK_ALLEY,tavern/social
+HCN_015,Orren Pike,watchman,06:00,09:00,B09_BARRACKS,report
+HCN_015,Orren Pike,watchman,09:00,12:00,B10_WATCH_WEST,patrol
+HCN_015,Orren Pike,watchman,12:00,15:00,B11_WATCH_EAST,watch
+HCN_016,Dalia Pike,watchman,06:00,09:00,B09_BARRACKS,report
+HCN_016,Dalia Pike,watchman,09:00,12:00,B10_WATCH_WEST,patrol
+HCN_016,Dalia Pike,watchman,12:00,15:00,B11_WATCH_EAST,watch
+HCN_016,Dalia Pike,watchman,15:00,18:00,B09_BARRACKS,meal rotation
+HCN_017,Selwin Marr,mayor,06:00,09:00,B18_MAYOR_HOUSE,work
+HCN_017,Selwin Marr,mayor,09:00,12:00,B04_MARKET,market errand
+HCN_017,Selwin Marr,mayor,12:00,15:00,B12_CHAPEL,meal/social
+HCN_017,Selwin Marr,mayor,15:00,18:00,B18_MAYOR_HOUSE,patrol
+HCN_017,Selwin Marr,mayor,18:00,22:00,B04_MARKET,return/home
+HCN_018,Hale Voss,merchant,06:00,09:00,B04_MARKET,work
+HCN_018,Hale Voss,merchant,09:00,12:00,B18_MAYOR_HOUSE,market errand
+HCN_018,Hale Voss,merchant,12:00,15:00,B07_TAVERN,meal/social
+HCN_019,Petra Clay,potter,06:00,09:00,B04_MARKET,work
+HCN_019,Petra Clay,potter,09:00,12:00,B16_CARPENTER,market errand
+HCN_019,Petra Clay,potter,12:00,15:00,B03_WELL,meal/social
+HCN_019,Petra Clay,potter,15:00,18:00,B04_MARKET,patrol
+HCN_020,Rowan Beck,miller,06:00,09:00,B01_NORTH_GATE,work
+HCN_020,Rowan Beck,miller,09:00,12:00,B04_MARKET,market errand
+HCN_020,Rowan Beck,miller,12:00,15:00,B05_BAKERY,meal/social
+HCN_020,Rowan Beck,miller,15:00,18:00,B01_NORTH_GATE,patrol
+HCN_020,Rowan Beck,miller,18:00,22:00,B04_MARKET,return/home
+HCN_021,Iris Bell,acolyte,06:00,09:00,B12_CHAPEL,morning prayer
+HCN_021,Iris Bell,acolyte,09:00,12:00,B03_WELL,well/market visit
+HCN_021,Iris Bell,acolyte,12:00,15:00,B24_TOWN_BELL,chapel duty
+HCN_022,Doran Ash,gravedigger,06:00,09:00,B13_CEMETERY,work
+HCN_022,Doran Ash,gravedigger,09:00,12:00,B12_CHAPEL,market errand
+HCN_022,Doran Ash,gravedigger,12:00,15:00,B07_TAVERN,meal/social
+HCN_022,Doran Ash,gravedigger,15:00,18:00,B13_CEMETERY,patrol
+HCN_023,Fenn Alder,tavern keeper,06:00,09:00,B07_TAVERN,open shop
+HCN_023,Fenn Alder,tavern keeper,09:00,12:00,B03_WELL,serve/work
+HCN_023,Fenn Alder,tavern keeper,12:00,15:00,B04_MARKET,market errand
+HCN_023,Fenn Alder,tavern keeper,15:00,18:00,B07_TAVERN,evening cleanup
+HCN_023,Fenn Alder,tavern keeper,18:00,22:00,B03_WELL,tavern/social
+HCN_024,Livia Crowe,barmaid,06:00,09:00,B07_TAVERN,work
+HCN_024,Livia Crowe,barmaid,09:00,12:00,B03_WELL,market errand
+HCN_024,Livia Crowe,barmaid,12:00,15:00,B21_BACK_ALLEY,meal/social
+HCN_025,Bram Keel,dockhand,06:00,09:00,B20_RIVER_BRIDGE,work
+HCN_025,Bram Keel,dockhand,09:00,12:00,B04_MARKET,market errand
+HCN_025,Bram Keel,dockhand,12:00,15:00,B07_TAVERN,meal/social
+HCN_025,Bram Keel,dockhand,15:00,18:00,B20_RIVER_BRIDGE,patrol
+HCN_026,Nora Keel,fishmonger,06:00,09:00,B04_MARKET,work
+HCN_026,Nora Keel,fishmonger,09:00,12:00,B03_WELL,market errand
+HCN_026,Nora Keel,fishmonger,12:00,15:00,B20_RIVER_BRIDGE,meal/social
+HCN_026,Nora Keel,fishmonger,15:00,18:00,B04_MARKET,patrol
+HCN_026,Nora Keel,fishmonger,18:00,22:00,B03_WELL,return/home
+HCN_027,Wystan Rook,militia,06:00,09:00,B04_MARKET,report
+HCN_027,Wystan Rook,militia,09:00,12:00,B12_CHAPEL,patrol
+HCN_027,Wystan Rook,militia,12:00,15:00,B09_BARRACKS,watch
+HCN_028,Edda Thorn,militia,06:00,09:00,B04_MARKET,report
+HCN_028,Edda Thorn,militia,09:00,12:00,B12_CHAPEL,patrol
+HCN_028,Edda Thorn,militia,12:00,15:00,B09_BARRACKS,watch
+HCN_028,Edda Thorn,militia,15:00,18:00,B04_MARKET,meal rotation
+HCN_029,Cailen Brooks,messenger,06:00,09:00,B18_MAYOR_HOUSE,work
+HCN_029,Cailen Brooks,messenger,09:00,12:00,B09_BARRACKS,market errand
+HCN_029,Cailen Brooks,messenger,12:00,15:00,B04_MARKET,meal/social
+HCN_029,Cailen Brooks,messenger,15:00,18:00,B12_CHAPEL,patrol
+HCN_029,Cailen Brooks,messenger,18:00,22:00,B18_MAYOR_HOUSE,return/home
+HCN_030,Maud Greer,cook,06:00,09:00,B05_BAKERY,work
+HCN_030,Maud Greer,cook,09:00,12:00,B09_BARRACKS,market errand
+HCN_030,Maud Greer,cook,12:00,15:00,B07_TAVERN,meal/social
+HCN_031,Ansel Fair,guard,06:00,09:00,B01_NORTH_GATE,report
+HCN_031,Ansel Fair,guard,09:00,12:00,B09_BARRACKS,patrol
+HCN_031,Ansel Fair,guard,12:00,15:00,B20_RIVER_BRIDGE,watch
+HCN_031,Ansel Fair,guard,15:00,18:00,B17_STOREHOUSE,meal rotation
+HCN_032,Perrin Wold,guard,06:00,09:00,B01_NORTH_GATE,report
+HCN_032,Perrin Wold,guard,09:00,12:00,B09_BARRACKS,patrol
+HCN_032,Perrin Wold,guard,12:00,15:00,B20_RIVER_BRIDGE,watch
+HCN_032,Perrin Wold,guard,15:00,18:00,B17_STOREHOUSE,meal rotation
+HCN_032,Perrin Wold,guard,18:00,22:00,B01_NORTH_GATE,post guard
+HCN_033,Helga Marr,noble,06:00,09:00,B18_MAYOR_HOUSE,work
+HCN_033,Helga Marr,noble,09:00,12:00,B12_CHAPEL,market errand
+HCN_033,Helga Marr,noble,12:00,15:00,B07_TAVERN,meal/social
+HCN_034,Rulf Redcap,drunk,06:00,09:00,B07_TAVERN,work
+HCN_034,Rulf Redcap,drunk,09:00,12:00,B21_BACK_ALLEY,market errand
+HCN_034,Rulf Redcap,drunk,12:00,15:00,B03_WELL,meal/social
+HCN_034,Rulf Redcap,drunk,15:00,18:00,B07_TAVERN,patrol
+HCN_035,Jessa Flint,charcoal seller,06:00,09:00,B06_BLACKSMITH,work
+HCN_035,Jessa Flint,charcoal seller,09:00,12:00,B21_BACK_ALLEY,market errand
+HCN_035,Jessa Flint,charcoal seller,12:00,15:00,B04_MARKET,meal/social
+HCN_035,Jessa Flint,charcoal seller,15:00,18:00,B06_BLACKSMITH,patrol
+HCN_035,Jessa Flint,charcoal seller,18:00,22:00,B21_BACK_ALLEY,return/home
+HCN_036,Otto Grey,storehouse clerk,06:00,09:00,B17_STOREHOUSE,work
+HCN_036,Otto Grey,storehouse clerk,09:00,12:00,B18_MAYOR_HOUSE,market errand
+HCN_036,Otto Grey,storehouse clerk,12:00,15:00,B04_MARKET,meal/social
+HCN_037,Clara Reed,washer,06:00,09:00,B03_WELL,work
+HCN_037,Clara Reed,washer,09:00,12:00,B20_RIVER_BRIDGE,market errand
+HCN_037,Clara Reed,washer,12:00,15:00,B21_BACK_ALLEY,meal/social
+HCN_037,Clara Reed,washer,15:00,18:00,B03_WELL,patrol
+HCN_038,Bevin Lark,lamplighter,06:00,09:00,B04_MARKET,work
+HCN_038,Bevin Lark,lamplighter,09:00,12:00,B12_CHAPEL,market errand
+HCN_038,Bevin Lark,lamplighter,12:00,15:00,B21_BACK_ALLEY,meal/social
+HCN_038,Bevin Lark,lamplighter,15:00,18:00,B01_NORTH_GATE,patrol
+HCN_038,Bevin Lark,lamplighter,18:00,22:00,B04_MARKET,return/home
+HCN_039,Ned Harrow,ratcatcher,06:00,09:00,B23_SEWER,work
+HCN_039,Ned Harrow,ratcatcher,09:00,12:00,B21_BACK_ALLEY,market errand
+HCN_039,Ned Harrow,ratcatcher,12:00,15:00,B07_TAVERN,meal/social
+HCN_040,Palla Wren,weaver,06:00,09:00,B14_TAILOR,work
+HCN_040,Palla Wren,weaver,09:00,12:00,B04_MARKET,market errand
+HCN_040,Palla Wren,weaver,12:00,15:00,B03_WELL,meal/social
+HCN_040,Palla Wren,weaver,15:00,18:00,B14_TAILOR,patrol
+HCN_041,Gideon Hart,chapel guard,06:00,09:00,B12_CHAPEL,report
+HCN_041,Gideon Hart,chapel guard,09:00,12:00,B13_CEMETERY,patrol
+HCN_041,Gideon Hart,chapel guard,12:00,15:00,B17_STOREHOUSE,watch
+HCN_041,Gideon Hart,chapel guard,15:00,18:00,B12_CHAPEL,meal rotation
+HCN_041,Gideon Hart,chapel guard,18:00,22:00,B13_CEMETERY,post guard
+HCN_042,Vera Silt,herbalist,06:00,09:00,B13_CEMETERY,work
+HCN_042,Vera Silt,herbalist,09:00,12:00,B15_APOTHECARY,market errand
+HCN_042,Vera Silt,herbalist,12:00,15:00,B12_CHAPEL,meal/social
+HCN_043,Tomlin Cross,porter,06:00,09:00,B17_STOREHOUSE,work
+HCN_043,Tomlin Cross,porter,09:00,12:00,B04_MARKET,market errand
+HCN_043,Tomlin Cross,porter,12:00,15:00,B20_RIVER_BRIDGE,meal/social
+HCN_043,Tomlin Cross,porter,15:00,18:00,B17_STOREHOUSE,patrol
+HCN_044,Ada Pike,archer trainee,06:00,09:00,B04_MARKET,work
+HCN_044,Ada Pike,archer trainee,09:00,12:00,B03_WELL,market errand
+HCN_044,Ada Pike,archer trainee,12:00,15:00,B07_TAVERN,meal/social
+HCN_044,Ada Pike,archer trainee,15:00,18:00,B04_MARKET,patrol
+HCN_044,Ada Pike,archer trainee,18:00,22:00,B03_WELL,return/home
+HCN_045,Lucan Merrow,archer,06:00,09:00,B09_BARRACKS,report
+HCN_045,Lucan Merrow,archer,09:00,12:00,B22_ROOFTOPS,patrol
+HCN_045,Lucan Merrow,archer,12:00,15:00,B12_CHAPEL,watch
+HCN_046,Mina Dell,candlemaker,06:00,09:00,B04_MARKET,work
+HCN_046,Mina Dell,candlemaker,09:00,12:00,B03_WELL,market errand
+HCN_046,Mina Dell,candlemaker,12:00,15:00,B07_TAVERN,meal/social
+HCN_046,Mina Dell,candlemaker,15:00,18:00,B04_MARKET,patrol
+HCN_047,Rost Fenwick,gate mechanic,06:00,09:00,B01_NORTH_GATE,work
+HCN_047,Rost Fenwick,gate mechanic,09:00,12:00,B17_STOREHOUSE,market errand
+HCN_047,Rost Fenwick,gate mechanic,12:00,15:00,B16_CARPENTER,meal/social
+HCN_047,Rost Fenwick,gate mechanic,15:00,18:00,B01_NORTH_GATE,patrol
+HCN_047,Rost Fenwick,gate mechanic,18:00,22:00,B17_STOREHOUSE,return/home
+HCN_048,Yara Voss,coin clerk,06:00,09:00,B18_MAYOR_HOUSE,work
+HCN_048,Yara Voss,coin clerk,09:00,12:00,B04_MARKET,market errand
+HCN_048,Yara Voss,coin clerk,12:00,15:00,B17_STOREHOUSE,meal/social
+HCN_049,Borin Shield,heavy guard,06:00,09:00,B09_BARRACKS,report
+HCN_049,Borin Shield,heavy guard,09:00,12:00,B17_STOREHOUSE,patrol
+HCN_049,Borin Shield,heavy guard,12:00,15:00,B09_BARRACKS,watch
+HCN_049,Borin Shield,heavy guard,15:00,18:00,B17_STOREHOUSE,meal rotation
+HCN_050,Cress Amber,bell ringer,06:00,09:00,B12_CHAPEL,morning prayer
+HCN_050,Cress Amber,bell ringer,09:00,12:00,B24_TOWN_BELL,well/market visit
+HCN_050,Cress Amber,bell ringer,12:00,15:00,B04_MARKET,chapel duty
+HCN_050,Cress Amber,bell ringer,15:00,18:00,B12_CHAPEL,bell readiness
+HCN_050,Cress Amber,bell ringer,18:00,22:00,B24_TOWN_BELL,evening service

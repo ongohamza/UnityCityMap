@@ -1,0 +1,2010 @@
+{
+  "citizens": [
+    {
+      "id": "HCN_001",
+      "name": "Alden Brask",
+      "role": "guard",
+      "personality": "Gruff, proud, suspicious of strangers.",
+      "combat": {
+        "attackType": "melee sword",
+        "movement": "walk patrol",
+        "threatLevel": "high",
+        "alarmBehavior": "attacks on sight when alarmed"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "watch"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "meal rotation"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_002",
+      "name": "Mira Hollen",
+      "role": "baker",
+      "personality": "Warm but observant; notices missing tools.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "flees and raises alarm"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B05_BAKERY",
+          "activity": "open shop"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "serve/work"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B07_TAVERN",
+          "activity": "evening cleanup"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B05_BAKERY",
+          "activity": "tavern/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_003",
+      "name": "Tobin Vale",
+      "role": "farmer",
+      "personality": "Practical, tired, keeps early hours.",
+      "combat": {
+        "attackType": "pitchfork",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "defensive only"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B05_BAKERY",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_004",
+      "name": "Sera Valewick",
+      "role": "market vendor",
+      "personality": "Talkative, alert, moves with crowds.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "calls alarm"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B04_MARKET",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_005",
+      "name": "Garron Holt",
+      "role": "blacksmith",
+      "personality": "Strong, short-tempered, dangerous if provoked.",
+      "combat": {
+        "attackType": "hammer swing",
+        "movement": "walk route",
+        "threatLevel": "medium",
+        "alarmBehavior": "fights if cornered"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B06_BLACKSMITH",
+          "activity": "open shop"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "serve/work"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "market errand"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B06_BLACKSMITH",
+          "activity": "evening cleanup"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "tavern/social"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_006",
+      "name": "Elric Dane",
+      "role": "footman",
+      "personality": "Young guard, eager, overcommits to pursuit.",
+      "combat": {
+        "attackType": "melee sword",
+        "movement": "short patrol",
+        "threatLevel": "medium",
+        "alarmBehavior": "pursues player"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "watch"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_007",
+      "name": "Nella Reed",
+      "role": "water carrier",
+      "personality": "Quiet, reliable, crosses market often.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "well path witness"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B03_WELL",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B05_BAKERY",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B03_WELL",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_008",
+      "name": "Father Caldus",
+      "role": "priest",
+      "personality": "Calm, can rally townsfolk with the bell.",
+      "combat": {
+        "attackType": "bell rally",
+        "movement": "walk route",
+        "threatLevel": "medium",
+        "alarmBehavior": "rings bell/rallies guards"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "morning prayer"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "well/market visit"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B13_CEMETERY",
+          "activity": "chapel duty"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B24_TOWN_BELL",
+          "activity": "bell readiness"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "evening service"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_009",
+      "name": "Brina Moss",
+      "role": "apothecary",
+      "personality": "Careful, keeps to back alley at dusk.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "flees to back alley"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B15_APOTHECARY",
+          "activity": "open shop"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "serve/work"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B13_CEMETERY",
+          "activity": "market errand"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_010",
+      "name": "Joric Fen",
+      "role": "stablehand",
+      "personality": "Fast runner, raises alarm if animals panic.",
+      "combat": {
+        "attackType": "none",
+        "movement": "fast run",
+        "threatLevel": "low",
+        "alarmBehavior": "runs to barracks"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B08_STABLE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B08_STABLE",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_011",
+      "name": "Tessa Goldthread",
+      "role": "tailor",
+      "personality": "Proud artisan, moves between market and tailor.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "calls alarm"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B14_TAILOR",
+          "activity": "open shop"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "serve/work"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "market errand"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B14_TAILOR",
+          "activity": "evening cleanup"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B04_MARKET",
+          "activity": "tavern/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_012",
+      "name": "Captain Varro",
+      "role": "captain",
+      "personality": "Elite guard, slow but lethal.",
+      "combat": {
+        "attackType": "heavy melee",
+        "movement": "slow patrol",
+        "threatLevel": "very_high",
+        "alarmBehavior": "commands guards, lethal"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "watch"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_013",
+      "name": "Lysa Tern",
+      "role": "scribe",
+      "personality": "Carries schedules and keys, avoids fighting.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "information carrier"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B19_SCHOOL",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B04_MARKET",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B19_SCHOOL",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_014",
+      "name": "Marek Stone",
+      "role": "carpenter",
+      "personality": "Repairs gates and barricades.",
+      "combat": {
+        "attackType": "hammer swing",
+        "movement": "walk route",
+        "threatLevel": "medium",
+        "alarmBehavior": "repairs barricades"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B16_CARPENTER",
+          "activity": "open shop"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "serve/work"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "market errand"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B16_CARPENTER",
+          "activity": "evening cleanup"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "tavern/social"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_015",
+      "name": "Orren Pike",
+      "role": "watchman",
+      "personality": "West tower archer, patient and accurate.",
+      "combat": {
+        "attackType": "bow shot",
+        "movement": "tower patrol",
+        "threatLevel": "high",
+        "alarmBehavior": "fires from range"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B10_WATCH_WEST",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B11_WATCH_EAST",
+          "activity": "watch"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_016",
+      "name": "Dalia Pike",
+      "role": "watchman",
+      "personality": "East tower archer, sharper eyes than Orren.",
+      "combat": {
+        "attackType": "bow shot",
+        "movement": "tower patrol",
+        "threatLevel": "high",
+        "alarmBehavior": "fires from range"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B10_WATCH_WEST",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B11_WATCH_EAST",
+          "activity": "watch"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "meal rotation"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_017",
+      "name": "Selwin Marr",
+      "role": "mayor",
+      "personality": "Cowardly but guarded, valuable information node.",
+      "combat": {
+        "attackType": "none",
+        "movement": "escort route",
+        "threatLevel": "low",
+        "alarmBehavior": "protected objective"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B04_MARKET",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_018",
+      "name": "Hale Voss",
+      "role": "merchant",
+      "personality": "Counts coin, hires guards when alarmed.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "hires/runs to guard"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_019",
+      "name": "Petra Clay",
+      "role": "potter",
+      "personality": "Moves between kiln and market.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "calls alarm"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B16_CARPENTER",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B03_WELL",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B04_MARKET",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_020",
+      "name": "Rowan Beck",
+      "role": "miller",
+      "personality": "Visits windmill/market, predictable.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "predictable worker"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B05_BAKERY",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B04_MARKET",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_021",
+      "name": "Iris Bell",
+      "role": "acolyte",
+      "personality": "Rings chapel bell if panic spreads.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "runs to bell"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "morning prayer"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "well/market visit"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B24_TOWN_BELL",
+          "activity": "chapel duty"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_022",
+      "name": "Doran Ash",
+      "role": "gravedigger",
+      "personality": "Night route near cemetery; ignores market noise.",
+      "combat": {
+        "attackType": "shovel swing",
+        "movement": "slow walk",
+        "threatLevel": "low",
+        "alarmBehavior": "defensive only"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B13_CEMETERY",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B13_CEMETERY",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_023",
+      "name": "Fenn Alder",
+      "role": "tavern keeper",
+      "personality": "Knows guard meal times.",
+      "combat": {
+        "attackType": "club swing",
+        "movement": "walk route",
+        "threatLevel": "medium",
+        "alarmBehavior": "rallies tavern crowd"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B07_TAVERN",
+          "activity": "open shop"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "serve/work"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B07_TAVERN",
+          "activity": "evening cleanup"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B03_WELL",
+          "activity": "tavern/social"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_024",
+      "name": "Livia Crowe",
+      "role": "barmaid",
+      "personality": "Moves between tavern and well; notices blood.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "alarm witness"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B07_TAVERN",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_025",
+      "name": "Bram Keel",
+      "role": "dockhand",
+      "personality": "Uses river bridge, low combat.",
+      "combat": {
+        "attackType": "hook swing",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "defensive only"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_026",
+      "name": "Nora Keel",
+      "role": "fishmonger",
+      "personality": "Market crowd node, loud alarm caller.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "loud alarm caller"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B04_MARKET",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B03_WELL",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_027",
+      "name": "Wystan Rook",
+      "role": "militia",
+      "personality": "Part-time guard, patrols after noon.",
+      "combat": {
+        "attackType": "spear jab",
+        "movement": "short patrol",
+        "threatLevel": "medium",
+        "alarmBehavior": "defends nearby building"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "watch"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_028",
+      "name": "Edda Thorn",
+      "role": "militia",
+      "personality": "Protects chapel yard, spear user.",
+      "combat": {
+        "attackType": "spear jab",
+        "movement": "short patrol",
+        "threatLevel": "medium",
+        "alarmBehavior": "defends nearby building"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "watch"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B04_MARKET",
+          "activity": "meal rotation"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_029",
+      "name": "Cailen Brooks",
+      "role": "messenger",
+      "personality": "Fast, can carry alarm across city.",
+      "combat": {
+        "attackType": "none",
+        "movement": "fast run",
+        "threatLevel": "medium",
+        "alarmBehavior": "spreads alarm quickly"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B04_MARKET",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_030",
+      "name": "Maud Greer",
+      "role": "cook",
+      "personality": "Supplies barracks, useful schedule clue.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "barracks supply clue"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B05_BAKERY",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_031",
+      "name": "Ansel Fair",
+      "role": "guard",
+      "personality": "North gate guard, predictable rotations.",
+      "combat": {
+        "attackType": "melee sword",
+        "movement": "walk patrol",
+        "threatLevel": "high",
+        "alarmBehavior": "attacks on sight when alarmed"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "watch"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "meal rotation"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_032",
+      "name": "Perrin Wold",
+      "role": "guard",
+      "personality": "Barracks patrol, lazy before lunch.",
+      "combat": {
+        "attackType": "melee sword",
+        "movement": "walk patrol",
+        "threatLevel": "high",
+        "alarmBehavior": "attacks on sight when alarmed"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "watch"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "meal rotation"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "post guard"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_033",
+      "name": "Helga Marr",
+      "role": "noble",
+      "personality": "Mayor household, escorts create risk.",
+      "combat": {
+        "attackType": "none",
+        "movement": "escort route",
+        "threatLevel": "low",
+        "alarmBehavior": "protected by escort"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_034",
+      "name": "Rulf Redcap",
+      "role": "drunk",
+      "personality": "Tavern regular, noisy distraction.",
+      "combat": {
+        "attackType": "none",
+        "movement": "wander",
+        "threatLevel": "low",
+        "alarmBehavior": "distraction node"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B07_TAVERN",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B03_WELL",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B07_TAVERN",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_035",
+      "name": "Jessa Flint",
+      "role": "charcoal seller",
+      "personality": "Moves forge fuel; can block alleys.",
+      "combat": {
+        "attackType": "none",
+        "movement": "cart route",
+        "threatLevel": "low",
+        "alarmBehavior": "blocks alley"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B06_BLACKSMITH",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B04_MARKET",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B06_BLACKSMITH",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_036",
+      "name": "Otto Grey",
+      "role": "storehouse clerk",
+      "personality": "Has storehouse route, noncombatant alarm risk.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "opens storehouse timing"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B04_MARKET",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_037",
+      "name": "Clara Reed",
+      "role": "washer",
+      "personality": "Visits well, river, back alley.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "well/river witness"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B03_WELL",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B03_WELL",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_038",
+      "name": "Bevin Lark",
+      "role": "lamplighter",
+      "personality": "Evening route reveals dark paths.",
+      "combat": {
+        "attackType": "none",
+        "movement": "evening route",
+        "threatLevel": "low",
+        "alarmBehavior": "reveals stealth timing"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B04_MARKET",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_039",
+      "name": "Ned Harrow",
+      "role": "ratcatcher",
+      "personality": "Knows sewer route; suspicious but not brave.",
+      "combat": {
+        "attackType": "none",
+        "movement": "sewer route",
+        "threatLevel": "low",
+        "alarmBehavior": "sewer clue"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B23_SEWER",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B21_BACK_ALLEY",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_040",
+      "name": "Palla Wren",
+      "role": "weaver",
+      "personality": "Low threat, crowd schedule node.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "crowd node"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B14_TAILOR",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B03_WELL",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B14_TAILOR",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_041",
+      "name": "Gideon Hart",
+      "role": "chapel guard",
+      "personality": "Heavy mace, guards reliquary.",
+      "combat": {
+        "attackType": "heavy mace",
+        "movement": "stationary guard",
+        "threatLevel": "high",
+        "alarmBehavior": "protects chapel/relic"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B13_CEMETERY",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "watch"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "meal rotation"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B13_CEMETERY",
+          "activity": "post guard"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_042",
+      "name": "Vera Silt",
+      "role": "herbalist",
+      "personality": "Visits cemetery, apothecary, chapel.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "cemetery route"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B13_CEMETERY",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B15_APOTHECARY",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_043",
+      "name": "Tomlin Cross",
+      "role": "porter",
+      "personality": "Carries crates to storehouse.",
+      "combat": {
+        "attackType": "crate shove",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "moves crates to storehouse"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B20_RIVER_BRIDGE",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_044",
+      "name": "Ada Pike",
+      "role": "archer trainee",
+      "personality": "Practices near west tower.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "flees"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B04_MARKET",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B03_WELL",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_045",
+      "name": "Lucan Merrow",
+      "role": "archer",
+      "personality": "Rooftop patrol near chapel.",
+      "combat": {
+        "attackType": "bow shot",
+        "movement": "perch patrol",
+        "threatLevel": "high",
+        "alarmBehavior": "ranged alarm defender"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B22_ROOFTOPS",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "watch"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_046",
+      "name": "Mina Dell",
+      "role": "candlemaker",
+      "personality": "Chapel/craft route, noncombatant.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "flees"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B04_MARKET",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B03_WELL",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B07_TAVERN",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B04_MARKET",
+          "activity": "patrol"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_047",
+      "name": "Rost Fenwick",
+      "role": "gate mechanic",
+      "personality": "Repairs gate controls at dusk.",
+      "combat": {
+        "attackType": "wrench swing",
+        "movement": "walk route",
+        "threatLevel": "medium",
+        "alarmBehavior": "gate timing clue"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B16_CARPENTER",
+          "activity": "meal/social"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B01_NORTH_GATE",
+          "activity": "patrol"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "return/home"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_048",
+      "name": "Yara Voss",
+      "role": "coin clerk",
+      "personality": "Market/mayor house route, alarm caller.",
+      "combat": {
+        "attackType": "none",
+        "movement": "walk route",
+        "threatLevel": "low",
+        "alarmBehavior": "alarm caller"
+      },
+      "prefabKey": "HumanCivilian",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B18_MAYOR_HOUSE",
+          "activity": "work"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B04_MARKET",
+          "activity": "market errand"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "meal/social"
+        }
+      ],
+      "playerOpportunity": "avoid, observe schedule, or use as alarm-risk node"
+    },
+    {
+      "id": "HCN_049",
+      "name": "Borin Shield",
+      "role": "heavy guard",
+      "personality": "Storehouse bruiser, high threat.",
+      "combat": {
+        "attackType": "heavy sword",
+        "movement": "stationary guard",
+        "threatLevel": "very_high",
+        "alarmBehavior": "protects storehouse"
+      },
+      "prefabKey": "HumanGuard",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "report"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "patrol"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B09_BARRACKS",
+          "activity": "watch"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B17_STOREHOUSE",
+          "activity": "meal rotation"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    },
+    {
+      "id": "HCN_050",
+      "name": "Cress Amber",
+      "role": "bell ringer",
+      "personality": "Runs to chapel bell during alarm.",
+      "combat": {
+        "attackType": "none",
+        "movement": "fast run",
+        "threatLevel": "medium",
+        "alarmBehavior": "runs to bell"
+      },
+      "prefabKey": "HumanMilitia",
+      "schedule": [
+        {
+          "start": "06:00",
+          "end": "09:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "morning prayer"
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "locationId": "B24_TOWN_BELL",
+          "activity": "well/market visit"
+        },
+        {
+          "start": "12:00",
+          "end": "15:00",
+          "locationId": "B04_MARKET",
+          "activity": "chapel duty"
+        },
+        {
+          "start": "15:00",
+          "end": "18:00",
+          "locationId": "B12_CHAPEL",
+          "activity": "bell readiness"
+        },
+        {
+          "start": "18:00",
+          "end": "22:00",
+          "locationId": "B24_TOWN_BELL",
+          "activity": "evening service"
+        }
+      ],
+      "playerOpportunity": "avoid or isolate; direct rush is dangerous"
+    }
+  ]
+}

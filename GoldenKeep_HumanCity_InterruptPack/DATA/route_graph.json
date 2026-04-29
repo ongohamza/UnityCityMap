@@ -1,0 +1,258 @@
+{
+  "nodes": [
+    {
+      "id": "R01_CAVE_EXIT",
+      "label": "Cave Exit",
+      "type": "entry",
+      "choiceMeaning": "start route quietly"
+    },
+    {
+      "id": "R02_SEWER_CULVERT",
+      "label": "Drain Culvert",
+      "type": "route",
+      "choiceMeaning": "low stealth path, slow but safer"
+    },
+    {
+      "id": "R03_NORTH_GATE",
+      "label": "North Gate",
+      "type": "route",
+      "choiceMeaning": "direct assault; usually fatal without distraction"
+    },
+    {
+      "id": "R04_MARKET_OBSERVE",
+      "label": "Market Observation",
+      "type": "choice",
+      "choiceMeaning": "watch citizen flow to learn timing"
+    },
+    {
+      "id": "R05_BAKERY_DISTRACTION",
+      "label": "Bakery Smoke Distraction",
+      "type": "choice",
+      "choiceMeaning": "pull civilians/guards away from market"
+    },
+    {
+      "id": "R06_BLACKSMITH_NOISE",
+      "label": "Forge Noise",
+      "type": "choice",
+      "choiceMeaning": "mask breaking gate/barricade"
+    },
+    {
+      "id": "R07_STABLE_PANIC",
+      "label": "Stable Panic",
+      "type": "choice",
+      "choiceMeaning": "dangerous distraction; raises partial alarm"
+    },
+    {
+      "id": "R08_BACK_ALLEY",
+      "label": "Back Alley",
+      "type": "route",
+      "choiceMeaning": "bypass market if witnesses are away"
+    },
+    {
+      "id": "R09_ROOFTOP_LINE",
+      "label": "Rooftop Line",
+      "type": "route",
+      "choiceMeaning": "avoid crowd, risk archers"
+    },
+    {
+      "id": "R10_CHAPEL_BELL",
+      "label": "Chapel Bell",
+      "type": "hazard",
+      "choiceMeaning": "if citizen reaches bell, alarm spikes"
+    },
+    {
+      "id": "R11_CHURCH_YARD",
+      "label": "Church Yard",
+      "type": "area",
+      "choiceMeaning": "optional relic/bell control"
+    },
+    {
+      "id": "R12_BARRACKS_ROTATION",
+      "label": "Barracks Rotation",
+      "type": "timing",
+      "choiceMeaning": "wait for meal rotation to reduce guards"
+    },
+    {
+      "id": "R13_GATEHOUSE",
+      "label": "Gatehouse",
+      "type": "barrier",
+      "choiceMeaning": "break through, sneak over, or distract guards"
+    },
+    {
+      "id": "R14_STOREHOUSE_FRONT",
+      "label": "Storehouse Front",
+      "type": "objective",
+      "choiceMeaning": "high-risk direct loot route"
+    },
+    {
+      "id": "R15_STOREHOUSE_SEWER",
+      "label": "Storehouse Sewer Grate",
+      "type": "objective",
+      "choiceMeaning": "low route to loot if grate open"
+    },
+    {
+      "id": "R16_MAYOR_KEY",
+      "label": "Mayor Key Opportunity",
+      "type": "choice",
+      "choiceMeaning": "steal/get key during market visit"
+    },
+    {
+      "id": "R17_RETURN_TUNNEL",
+      "label": "Return Tunnel",
+      "type": "exit",
+      "choiceMeaning": "escape after loot"
+    },
+    {
+      "id": "R18_FULL_ALARM",
+      "label": "Full Alarm",
+      "type": "failure_state",
+      "choiceMeaning": "guards converge; unplanned rush usually dies"
+    }
+  ],
+  "edges": [
+    {
+      "from": "R01_CAVE_EXIT",
+      "to": "R02_SEWER_CULVERT",
+      "choice": "enter via culvert",
+      "risk": "low",
+      "requires": "none",
+      "creates": "quiet entry"
+    },
+    {
+      "from": "R01_CAVE_EXIT",
+      "to": "R03_NORTH_GATE",
+      "choice": "rush main gate",
+      "risk": "very_high",
+      "requires": "strong combat",
+      "creates": "fast failure/alarm"
+    },
+    {
+      "from": "R02_SEWER_CULVERT",
+      "to": "R08_BACK_ALLEY",
+      "choice": "crawl to alley",
+      "risk": "low",
+      "requires": "ratcatcher away or avoided",
+      "creates": "behind-market entry"
+    },
+    {
+      "from": "R08_BACK_ALLEY",
+      "to": "R04_MARKET_OBSERVE",
+      "choice": "observe market",
+      "risk": "low",
+      "requires": "patience",
+      "creates": "schedule knowledge"
+    },
+    {
+      "from": "R04_MARKET_OBSERVE",
+      "to": "R05_BAKERY_DISTRACTION",
+      "choice": "trigger bakery smoke/noise",
+      "risk": "medium",
+      "requires": "baker busy or absent",
+      "creates": "crowd shifts"
+    },
+    {
+      "from": "R04_MARKET_OBSERVE",
+      "to": "R16_MAYOR_KEY",
+      "choice": "follow mayor/scribe for key",
+      "risk": "medium",
+      "requires": "avoid guards",
+      "creates": "storehouse shortcut"
+    },
+    {
+      "from": "R05_BAKERY_DISTRACTION",
+      "to": "R13_GATEHOUSE",
+      "choice": "move during distraction",
+      "risk": "medium",
+      "requires": "guard rotation gap",
+      "creates": "gate access"
+    },
+    {
+      "from": "R06_BLACKSMITH_NOISE",
+      "to": "R13_GATEHOUSE",
+      "choice": "break gate during forge noise",
+      "risk": "medium",
+      "requires": "blacksmith not hostile",
+      "creates": "masked gate break"
+    },
+    {
+      "from": "R07_STABLE_PANIC",
+      "to": "R18_FULL_ALARM",
+      "choice": "panic animals too early",
+      "risk": "very_high",
+      "requires": "none",
+      "creates": "alarm cascade"
+    },
+    {
+      "from": "R08_BACK_ALLEY",
+      "to": "R09_ROOFTOP_LINE",
+      "choice": "climb roofline",
+      "risk": "medium",
+      "requires": "archer timing",
+      "creates": "above-market route"
+    },
+    {
+      "from": "R09_ROOFTOP_LINE",
+      "to": "R11_CHURCH_YARD",
+      "choice": "drop into church yard",
+      "risk": "medium",
+      "requires": "watchtower gap",
+      "creates": "bell control option"
+    },
+    {
+      "from": "R11_CHURCH_YARD",
+      "to": "R10_CHAPEL_BELL",
+      "choice": "ignore bell runner",
+      "risk": "high",
+      "requires": "none",
+      "creates": "alarm spike"
+    },
+    {
+      "from": "R11_CHURCH_YARD",
+      "to": "R13_GATEHOUSE",
+      "choice": "cross yard to gatehouse",
+      "risk": "medium",
+      "requires": "chapel guard avoided/defeated",
+      "creates": "inner route"
+    },
+    {
+      "from": "R12_BARRACKS_ROTATION",
+      "to": "R13_GATEHOUSE",
+      "choice": "wait for meal rotation",
+      "risk": "low",
+      "requires": "time observation",
+      "creates": "reduced gate defenders"
+    },
+    {
+      "from": "R13_GATEHOUSE",
+      "to": "R14_STOREHOUSE_FRONT",
+      "choice": "direct storehouse door",
+      "risk": "high",
+      "requires": "strong combat or key",
+      "creates": "front loot access"
+    },
+    {
+      "from": "R13_GATEHOUSE",
+      "to": "R15_STOREHOUSE_SEWER",
+      "choice": "use sewer grate",
+      "risk": "medium",
+      "requires": "grate open/key",
+      "creates": "stealth loot access"
+    },
+    {
+      "from": "R14_STOREHOUSE_FRONT",
+      "to": "R17_RETURN_TUNNEL",
+      "choice": "take loot and retreat",
+      "risk": "medium",
+      "requires": "loot collected",
+      "creates": "successful escape"
+    },
+    {
+      "from": "R15_STOREHOUSE_SEWER",
+      "to": "R17_RETURN_TUNNEL",
+      "choice": "crawl out with loot",
+      "risk": "low",
+      "requires": "loot collected",
+      "creates": "successful escape"
+    }
+  ]
+}
