@@ -1,0 +1,87 @@
+# Unity
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+*.log
+sysinfo.txt
+mono_crash.*
+
+# Blender temp imports
+*.blend1
+*.blend1.meta
+
+# JetBrains Rider / IDE
+/[Aa]ssets/Plugins/Editor/JetBrains*
+*.DotSettings.user
+.consulo/
+
+# Visual Studio / solution files
+.vs/
+ExportedObj/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Generated meta files for IDE/db artifacts
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Gradle
+.gradle/
+
+# Build outputs / packages
+*.apk
+*.aab
+*.app
+*.unitypackage
+*.unitypackage.meta
+
+# Crashlytics
+crashlytics-build.properties
+
+# Test runner / generated test scenes
+InitTestScene*.unity*
+/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Addressables
+/ServerData
+/[Aa]ssets/StreamingAssets/aa*
+/[Aa]ssets/AddressableAssetsData/link.xml*
+/[Aa]ssets/Addressables_Temp*
+/[Aa]ssets/AddressableAssetsData/*/*.bin*
+
+# Visual Scripting generated files
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
+
+# Optional: Asset Store tools
+# /[Aa]ssets/AssetStoreTools*
+# Local Unity Linux builds / do-not-ship output
+# Unity local Linux build output / do-not-ship files
+# Unity local Linux build output / do-not-ship files
+UnityPlayer.so
+*.x86_64
+*_Data/
+*_BurstDebugInformation_DoNotShip/
+libdecor*.so*
+
